@@ -1,0 +1,111 @@
+<head>
+<script type="text/javascript" src="external_js/jquery-1.9.0.min.js"></script>
+<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+<script type="text/javascript" src="http://static.titovanton.com/static/titovanton/libs/flexible-stars/jquery.flexible.stars.js"></script>
+<link rel="stylesheet" href="/resources/demos/style.css" />
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />   
+   <style type="text/css" media="screen">
+            i {display: inline-block}
+            [class^="sprite-"] {
+                background: url(http://static.titovanton.com/static/titovanton//pic/csg-513e9341220f7.png) no-repeat top left;
+            }
+
+            .sprite-gold-star{ background-position: 0 0; width: 29px; height: 28px; } 
+            .sprite-half-star{ background-position: 0 -78px; width: 29px; height: 28px; } 
+            .sprite-silver-star{ background-position: 0 -156px; width: 29px; height: 28px; } 
+        </style>
+  	
+<script type="text/javascript">
+$(document).ready(function() {
+	var totalScore = 0;
+	var numRatings = 0;
+	var averageScore = 2;
+	
+	$(function(){
+		$(".rateBook").flexibleStars({
+			init: averageScore,
+			doRate: "#rating",
+			gold: "sprite-gold-star",
+			silver: "sprite-silver-star",
+			half: "sprite-half-star",
+			url: "/flexible-stars/example/handler/"
+		});
+	});
+	
+	$("#addToShelf").click(function(){
+		var shouldAdd = confirm("Add this book to your reading list?");
+	});
+	
+	$("#recommend").click(function(){
+		$("#chooseFriends").dialog("open");
+	});
+	
+	$("#addComment").click(function(){
+		console.log("clicked");
+		$('#comments').prepend("<div class='comment' style='border: 1px solid black; width: 600px'><b>You:</b> "+$("#commentForm").val()+"</div>");
+		$('#commentForm').val("");
+	});
+
+ $(function() {	
+ $("#chooseFriends").dialog({
+	autoOpen: false,
+	height: 300,
+	width: 350,
+	modal: true,
+	buttons: {
+		"Recommend": function() {
+			var shouldRecommend = confirm("Are you sure?");
+			if (shouldRecommend){
+				$(this).dialog("close");
+				$('#chooseFriends').find(':checked').each(function() {
+					$(this).removeAttr('checked');
+				});
+				alert("Recommended.");
+			}
+		},
+		"Cancel": function() {
+			$(this).dialog("close");
+			$('#chooseFriends').find(':checked').each(function() {
+				$(this).removeAttr('checked');
+			});
+		},
+		
+	}
+	});
+});
+});
+</script>
+</head>
+
+<body>
+<div id="chooseFriends" title="Recommend To:">
+	<form>
+	<fieldset>
+	<input type="checkbox" id="jason">Jason James</input></br>
+	<input type="checkbox" id="allison">Allison Abernathy</br>
+	<input type="checkbox" id="librarian">Librarian Lady</br>
+	</fieldset>
+	</form>
+</div>
+
+<h1>Twilight</h1>
+
+<h2>Genre: Romance</h2>
+
+<h2>Synopsis:</h2> A book where a girl falls in love with a sparkly vampire
+
+<h2>Rating:<div id="rate" class="rateBook"></div></h2>
+
+<input type="hidden" id="rating">
+	
+<button type="button" id="addToShelf">Add To Reading List</button>
+<button type="button" id="recommend">Recommend</button>
+
+<h2>Comments:</h2>
+<input type="text" style="height: 75px; width: 400px;" id="commentForm" />
+<button type="button" id="addComment">Add Comment</button>
+<p>
+<div id="comments"></div>
+<div class='comment' style='border: 1px solid black; width: 600px'><b>Allison: </b>If you wish a vampire was your boyfriend, this might be the book for you!</div>
+<div class='comment' style='border: 1px solid black; width: 600px'><b>Jason: </b>It's terrible! Why does anyone even read this?</div>
+</body>
