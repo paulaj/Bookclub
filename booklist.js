@@ -5,7 +5,7 @@ $(function() {
 	var reading_list="\n";
 	
     
-    //Part 2: replace words with variables
+    //HI
 	//document.getElementById("from").innerHTML=reading.title
     
 	
