@@ -1,0 +1,141 @@
+<head>
+<script type="text/javascript" src="external_js/jquery-1.9.0.min.js"></script>
+<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+<script type="text/javascript" src="http://static.titovanton.com/static/titovanton/libs/flexible-stars/jquery.flexible.stars.js"></script>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />   
+<link rel="stylesheet" href="mystyle.css">
+   <style type="text/css" media="screen">
+            i {display: inline-block}
+            [class^="sprite-"] {
+                background: url(http://static.titovanton.com/static/titovanton//pic/csg-513e9341220f7.png) no-repeat top left;
+            }
+
+            .sprite-gold-star{ background-position: 0 0; width: 29px; height: 28px; } 
+            .sprite-half-star{ background-position: 0 -78px; width: 29px; height: 28px; } 
+            .sprite-silver-star{ background-position: 0 -156px; width: 29px; height: 28px; } 
+        </style>
+		
+<script type="text/javascript">
+$(document).ready(function() {
+	var totalScore = 0;
+	var numRatings = 0;
+	var averageScore = 3;
+	
+	$(function(){
+		$(".rateBook").flexibleStars({
+			init: averageScore,
+			doRate: "#rating",
+			gold: "sprite-gold-star",
+			silver: "sprite-silver-star",
+			half: "sprite-half-star",
+			url: "/flexible-stars/example/handler/"
+		});
+	});
+	
+	$("#addToShelf").click(function(){
+		var shouldAdd = confirm("Add this book to your reading list?");
+	});
+	
+	$("#recommend").click(function(){
+		$("#chooseFriends").dialog("open");
+	});
+	
+	$("#addComment").click(function(){
+		if($('#commentForm').val() != ""){
+		$('#comments').prepend("<div class='comment'><b>You:</b> "+$("#commentForm").val()+"</div>");
+		$('#commentForm').val("");
+		}
+	});
+
+ $(function() {	
+ $("#chooseFriends").dialog({
+	autoOpen: false,
+	height: 300,
+	width: 350,
+	modal: true,
+	buttons: {
+		"Recommend": function() {
+			var shouldRecommend = confirm("Are you sure?");
+			if (shouldRecommend){
+				$(this).dialog("close");
+				$('#chooseFriends').find(':checked').each(function() {
+					$(this).removeAttr('checked');
+				});
+				alert("Recommended.");
+			}
+		},
+		"Cancel": function() {
+			$(this).dialog("close");
+			$('#chooseFriends').find(':checked').each(function() {
+				$(this).removeAttr('checked');
+			});
+		},
+		
+	}
+	});
+});
+});
+</script>
+</head>
+
+<body>
+
+<div id="chooseFriends" title="Recommend To:">
+	<form>
+	<fieldset>
+	<input type="checkbox" id="jason">Jason James</input></br>
+	<input type="checkbox" id="allison">Allison Abernathy</br>
+	<input type="checkbox" id="librarian">Librarian Lady</br>
+	</fieldset>
+	</form>
+</div>
+
+    <ul>
+
+    <li><a href="friendsList.html" class="navBar">Friends</a></li>
+    <li><a href="readingList.html" class="navBar">My Reading List</a></li>
+    <li><a href="booksList.html" class="navBar">Books</a></li>
+    <li><a href="home.html" class="navBar">Logout</a></li>
+
+    </ul>
+
+    <div class="border"></div>
+    <div class="content">  
+	
+<table>
+<div class="border"></div>
+<div class="content">
+        <tr>
+		<td></td>
+<td><h1>Eragon</h1></td></tr>
+<tr>
+<td></td>
+<td><h2>Genre: Adventure</h2></td></tr>
+<tr>
+<td></td>
+<td><h2>Synopsis:</h2>Eragon finds a dragon egg and goes off on adventures which are fairly similar to the plot of Star Wars.</td></tr>
+<tr>
+<td></td>
+<td><h2>Rating:<div id="rate" class="rateBook"></div></h2></td></tr>
+<tr>
+<td></td>
+<input type="hidden" id="rating">
+<td><button type="button" id="addToShelf">Add To Reading List</button>
+<button type="button" id="recommend">Recommend</button></td></tr>
+
+<tr>
+<td></td>
+<td><h2>Comments:</h2>
+<input type="text" style="height: 75px; width: 400px;" id="commentForm" />
+<button type="button" id="addComment">Add Comment</button></td></tr>
+
+<tr>
+<td></td>
+<td>
+<div id="comments">
+</div>
+</td></tr>
+
+</table>
+</div>
+</body>
