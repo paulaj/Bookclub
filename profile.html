@@ -4,7 +4,7 @@
   <head>
     <link rel="stylesheet" type="text/css" href="mystyle.css">
     <script type="text/javascript" src="books.json"></script>
-    <script type="text/javascript" src="translate_game.js"></script>
+    <script type="text/javascript" src="autocomplete.js"></script>
   </head>
 
   <body>
@@ -14,8 +14,8 @@
     <ul>
 
     <li><a href="friendsList.html" class="navBar">Friends</a></li>
-    <li><a href="booklist.html" class="navBar">My Library</a></li>
-    <li><a href="booksearch.html" class="navBar">Find Books</a></li>
+    <li><a href="readingList.html" class="navBar">My Reading List</a></li>
+    <li><a href="booksList.html" class="navBar">Books</a></li>
     <li><a href="home.html" class="navBar">Logout</a></li>
 
     </ul>
@@ -46,8 +46,11 @@
         </tr>
         <tr>
           <td></td>
-  <td colspan="2"><div id="profileRecommend"><span id="profileRecommendButton" onclick="autocompleteBook();">Recommend a Book</span></div></td>
+  <td colspan="2"><div id="profileRecommend"><span id="profileRecommendButton" onclick="document.getElementById('profileRecommendBookDiv').style.display=block;">Recommend a Book</span></div></td>
         </tr>
+        <tr>
+        <td></td>
+        <td><div id="profileRecommendBookDiv" style="display:none"><input type="text" id="profileRecommendBook" /></div></td></tr>
       </table>
     </div>
   </body>
