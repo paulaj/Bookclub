@@ -5,7 +5,7 @@ $(function() {
 	var reading_list="\n";
 	
     
-    //HI
+    
 	//document.getElementById("from").innerHTML=reading.title
     
 	
@@ -15,7 +15,8 @@ $(function() {
 	+ "    " + reading[key].author +" \n";
 	
 	}
-	$(".from").html(reading_list);
+	$(".books").html(reading_list);
+	//'<header1>Reading: </header1><br/><a href="holes.html" class="listedBook">Holes by Louis Sachar</a><br/><header1>Going to Read: </header1><br/><a href="mobydick.html" class="listedBook">Moby Dick by Herman Melville</a><br/><header1>Already Read: </header1><br/><a href="eragon.html" class="listedBook">Eragon by Christopher Paolini</a><br/>');
 
 		
 	

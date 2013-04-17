@@ -99,7 +99,7 @@ $(document).ready(function() {
     <ul>
 
     <li><a href="friendsList.html" class="navBar">Friends</a></li>
-    <li><a href="readingList.html" class="navBar">My Reading List</a></li>
+    <li><a href="booklist.html" class="navBar">My Reading List</a></li>
     <li><a href="booksList.html" class="navBar">Books</a></li>
     <li><a href="home.html" class="navBar">Logout</a></li>
 
@@ -126,7 +126,11 @@ $(document).ready(function() {
 <tr>
 <td></td>
 <input type="hidden" id="rating">
-<td><button type="button" id="addToShelf">Add To Reading List</button>
+<td>
+<!--<button type="button" id="addToShelf">Add To Reading List</button>-->
+<form action="booklist.html">
+    <input type="submit" value="Add To Reading List">
+</form>
 <button type="button" id="recommend">Recommend</button></td></tr>
 
 <tr>
