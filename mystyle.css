@@ -20,7 +20,7 @@ a:link{
   text-decoration: none;
 }
 
-a.navbar{
+a.navBar{
   text-align:center;
   display:block;
   width:100%;
@@ -56,9 +56,31 @@ td.border{
   background-color:#CCCCFF;
   width:10%;
 }
+td.readinglist{
+  right:0px;
+  width:700px;
+}
+
 
 h1{
   font-size:200%;
+}
+
+header1
+{
+text-align:center;
+font-family:"Trebuchet MS";
+color:darkgrey;
+font-size:40px;
+margin:10px;
+padding:20px;
+}
+a.listedBook{
+text-align:center;
+font-size:30px;
+margin:10px;
+padding:20px;
+
 }
 
 h2{
