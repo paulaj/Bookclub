@@ -114,22 +114,12 @@ div#chooseFriends{
 }
 
 span#profileRecommendButton{
-  background-color:#CCCCFF;
+  background-color:#8888FF;
   font-size:200%;
   color:#0000FF;
 }
 
 span#profileRecommendButton:hover{
   background-color:#FFFFFF;
-<<<<<<< HEAD
   onclick
 }
-=======
-}
-
-span#profileRecommendBox{
-  background-color:#CCCCFF;
-}
-
-
->>>>>>> mystyle
