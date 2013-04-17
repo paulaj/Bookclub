@@ -43,9 +43,11 @@ $(document).ready(function() {
 	$("#addComment").click(function(){
 		if($('#commentForm').val() != ""){
 		var comment = $("#commentForm").val();
+		comment = comment.replace(/\$\(/g, ' ');
+		comment = comment.replace(/\</g, ' ');
+		comment = comment.replace(/\>/g, ' ');
 		comment = comment.replace(/\r\n/g, "</p><p>");
 		comment = comment.replace(/\n/g, "<br/>");
-		console.log(comment);
 		$('#comments').prepend("<div class='comment'><b>You:</b> "+comment+"</div>");
 		$('#commentForm').val("");
 		}
