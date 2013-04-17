@@ -1,10 +1,9 @@
-
 <head>
 <script type="text/javascript" src="external_js/jquery-1.9.0.min.js"></script>
 <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
 <script type="text/javascript" src="http://static.titovanton.com/static/titovanton/libs/flexible-stars/jquery.flexible.stars.js"></script>
-<link rel="stylesheet" href="/resources/demos/style.css" />
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />   
+<link rel="stylesheet" href="mystyle.css">
    <style type="text/css" media="screen">
             i {display: inline-block}
             [class^="sprite-"] {
@@ -42,9 +41,10 @@ $(document).ready(function() {
 	});
 	
 	$("#addComment").click(function(){
-		console.log("clicked");
-		$('#comments').prepend("<div class='comment' style='border: 1px solid black; width: 600px'><b>You:</b> "+$("#commentForm").val()+"</div>");
+		if($('#commentForm').val() != ""){
+		$('#comments').prepend("<div class='comment'><b>You:</b> "+$("#commentForm").val()+"</div>");
 		$('#commentForm').val("");
+		}
 	});
 
  $(function() {	
@@ -79,6 +79,7 @@ $(document).ready(function() {
 </head>
 
 <body>
+
 <div id="chooseFriends" title="Recommend To:">
 	<form>
 	<fieldset>
@@ -89,24 +90,54 @@ $(document).ready(function() {
 	</form>
 </div>
 
-<h1>Twilight</h1>
+    <ul>
 
-<h2>Genre: Romance</h2>
+    <li><a href="friendsList.html" class="navBar">Friends</a></li>
+    <li><a href="readingList.html" class="navBar">My Reading List</a></li>
+    <li><a href="booksList.html" class="navBar">Books</a></li>
+    <li><a href="home.html" class="navBar">Logout</a></li>
 
-<h2>Synopsis:</h2> A book where a girl falls in love with a sparkly vampire
+    </ul>
 
-<h2>Rating:<div id="rate" class="rateBook"></div></h2>
-
-<input type="hidden" id="rating">
+    <div class="border"></div>
+    <div class="content">  
 	
-<button type="button" id="addToShelf">Add To Reading List</button>
-<button type="button" id="recommend">Recommend</button>
+<table>
+<div class="border"></div>
+<div class="content">
+        <tr>
+		<td></td>
+<td><h1>Twilight</h1></td></tr>
+<tr>
+<td></td>
+<td><h2>Genre: Romance</h2></td></tr>
+<tr>
+<td></td>
+<td><h2>Synopsis:</h2> A book where a girl falls in love with a sparkly vampire.</td></tr>
+<tr>
+<td></td>
+<td><h2>Rating:<div id="rate" class="rateBook"></div></h2></td></tr>
+<tr>
+<td></td>
+<input type="hidden" id="rating">
+<td><button type="button" id="addToShelf">Add To Reading List</button>
+<button type="button" id="recommend">Recommend</button></td></tr>
 
-<h2>Comments:</h2>
+<tr>
+<td></td>
+<td><h2>Comments:</h2>
 <input type="text" style="height: 75px; width: 400px;" id="commentForm" />
-<button type="button" id="addComment">Add Comment</button>
-<p>
-<div id="comments"></div>
-<div class='comment' style='border: 1px solid black; width: 600px'><b>Allison: </b>If you wish a vampire was your boyfriend, this might be the book for you!</div>
-<div class='comment' style='border: 1px solid black; width: 600px'><b>Jason: </b>It's terrible! Why does anyone even read this?</div>
+<button type="button" id="addComment">Add Comment</button></td></tr>
+
+<tr>
+<td></td>
+<td>
+<div id="comments">
+<div class="comment"><b>Paula: </b>If you wish a vampire was your boyfriend, this might be the book for you!</div>
+<div class='comment'><b>Mariam: </b>It's terrible! Why does anyone even read this?</div>
+</div>
+</td></tr>
+
+</table>
+</div>
 </body>

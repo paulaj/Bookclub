@@ -78,9 +78,10 @@ div.content{
   position:absolute;
 }
 
-div.comment{
+.comment{
 	border: 1px solid blue; 
-	width: 600px;
+	border-radius: 10px;
+	padding: 10px;
 }
 
 div#chooseFriends{
@@ -100,4 +101,3 @@ span#profileRecommendButton:hover{
   background-color:#FFFFFF;
   onclick
 }
-
