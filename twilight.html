@@ -42,7 +42,11 @@ $(document).ready(function() {
 	
 	$("#addComment").click(function(){
 		if($('#commentForm').val() != ""){
-		$('#comments').prepend("<div class='comment'><b>You:</b> "+$("#commentForm").val()+"</div>");
+		var comment = $("#commentForm").val();
+		comment = comment.replace(/\r\n/g, "</p><p>");
+		comment = comment.replace(/\n/g, "<br/>");
+		console.log(comment);
+		$('#comments').prepend("<div class='comment'><b>You:</b> "+comment+"</div>");
 		$('#commentForm').val("");
 		}
 	});
@@ -126,7 +130,7 @@ $(document).ready(function() {
 <tr>
 <td></td>
 <td><h2>Comments:</h2>
-<input type="text" style="height: 75px; width: 400px;" id="commentForm" />
+<textarea type="text" style="height: 75px; width: 400px;" id="commentForm"></textarea>
 <button type="button" id="addComment">Add Comment</button></td></tr>
 
 <tr>
