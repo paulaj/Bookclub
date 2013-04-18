@@ -18,7 +18,7 @@
 		var row2;
 		var tableContent="";
 		for(var i = 0; i < friends.length; i++){
-			row1 = "<tr><td><img src= 'sprite-gold-star'/>" +"</td><td><a href='" + friends[i]+"profile.html'/><img src='"+friends[i]+".png'/></a></td><td></td><td nowrap class='friend_name'><h2>" + friends[i] + "</h2></td></tr>";
+			row1 = "<tr><td><img src= 'sprite-gold-star'/>" +"</td><td><a href='" + friends[i]+"profile.html'/><img src='"+friends[i]+".png' alt='"+friends[i]+"'/></a></td><td></td><td nowrap class='friend_name'><h2>" + friends[i] + "</h2></td></tr>";
 			row2 = "<tr class='arbuttons'><td></td><td class='rem'><center><button id='"+friends[i]+"'onClick='removeFriend(this.id)'>Remove</button></center></td></tr>";
 			tableContent+=row1+row2;
 		}
@@ -33,6 +33,12 @@
 		}
 		displayFriends();
 	}
+    
+    function searchFriends(){
+      document.getElementById('displayFriendsTable').innerHTML='';
+      friends = ['Usman Masood', 'Luly Alcaraz', 'Mari Kobiashvili'];
+      displayFriends();
+    }
 	</script>	
 	</head>
     <body>
@@ -53,7 +59,7 @@
 			<td>
 			</td>
 			<td><input type="text" id="friendSearchBox" align="center" size="75" autofocus></td>
-			<td><button id="frndSrchBtn" onClick="searchFriends()"><span class="ui-icon ui-icon-search"></span></button></td>
+			<td><button id="frndSrchBtn" onclick="searchFriends()"><span class="ui-icon ui-icon-search"></span></button></td>
 		</tr>
 	</table>
 	<table id="displayFriendsTable">
