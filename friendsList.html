@@ -8,6 +8,7 @@
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" /> 	
 	<script type="text/javascript">
 	var friends = ['Usman Masood', 'Luly Alcaraz', 'Mari Kobiashvili'];
+    var users = ['Usman Masood', 'Luly Alcaraz', 'Mari Kobiashvili', 'Paula Jacobs'];
 	$(document).ready(function() {
 		displayFriends();
 	});
@@ -18,7 +19,7 @@
 		var row2;
 		var tableContent="";
 		for(var i = 0; i < friends.length; i++){
-			row1 = "<tr><td><img src= 'sprite-gold-star'/>" +"</td><td><a href='" + friends[i]+"profile.html'/><img src='"+friends[i]+".png' alt='"+friends[i]+"'/></a></td><td></td><td nowrap class='friend_name'><h2>" + friends[i] + "</h2></td></tr>";
+			row1 = "<tr><td><img src= 'sprite-gold-star'/>" +"</td><td><a href='" + friends[i]+"profile.html'/><img src='"+friends[i]+".png' alt='"+friends[i]+"'/></a></td><td></td><td nowrap class='friend_name'><h2><a href='" + friends[i]+"profile.html'/>" + friends[i] + "</a></h2></td></tr>";
 			row2 = "<tr class='arbuttons'><td></td><td class='rem'><center><button id='"+friends[i]+"'onClick='removeFriend(this.id)'>Remove</button></center></td></tr>";
 			tableContent+=row1+row2;
 		}
@@ -34,11 +35,42 @@
 		displayFriends();
 	}
     
-    function searchFriends(){
-      document.getElementById('displayFriendsTable').innerHTML='';
-      friends = ['Usman Masood', 'Luly Alcaraz', 'Mari Kobiashvili'];
-      displayFriends();
-    }
+function addFriend(lost_friend){
+var new_buddy = lost_friend.replace('_add', '');
+if(users.indexOf(new_buddy) > -1){
+friends.push(new_buddy);
+}
+displayFriends();
+}
+
+$(function() {
+    var availableTags = users;
+    $("#friendSearchBox").autocomplete({source: availableTags});
+    
+});
+
+function searchFriends(lost_friend){
+$("#displayFriendsTable").empty();
+var row1;
+var row2;
+var tableContent="";
+var url = lost_friend.replace(' ', '');
+url = url + 'Profile.html'
+if(friends.indexOf(lost_friend) > -1){
+displayFriends();
+}
+else if(users.indexOf(lost_friend) > -1){
+row1 = "<tr><td>" +"</td><td><img src='"+lost_friend+".png'/></td><td class='friend_name'><a href='"+url+"'>" + lost_friend + "</a></td></tr>";
+row2 = "<tr class='arbuttons'><td></td><td></td><td></td><td align='right'><button id='"+lost_friend+"_add' onClick='addFriend(this.id)' align='right'>Add</button></td></tr>";
+tableContent+=row1+row2;
+}
+else{
+tableContent = "<tr><td></td><td colspan='5'>No user matching that name exists.</td></tr>";
+}
+document.getElementById('displayFriendsTable').innerHTML = tableContent;
+}
+
+    
 	</script>	
 	</head>
     <body>
