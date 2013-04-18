@@ -113,6 +113,6 @@ div#chooseFriends{
 	modal: true;
 }
 
-div.spacer{
-  width:300px;
+td.rem{
+  vertical-align:text-top;
 }

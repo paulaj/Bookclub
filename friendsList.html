@@ -19,7 +19,7 @@
 		var tableContent="";
 		for(var i = 0; i < friends.length; i++){
 			row1 = "<tr><td><img src= 'sprite-gold-star'/>" +"</td><td><a href='" + friends[i]+"profile.html'/><img src='"+friends[i]+".png'/></a></td><td></td><td nowrap class='friend_name'><h2>" + friends[i] + "</h2></td></tr>";
-			row2 = "<tr class='arbuttons'><td></td><td><center><button id='"+friends[i]+"'onClick='removeFriend(this.id)'>Remove</button></center></td></tr>";
+			row2 = "<tr class='arbuttons'><td></td><td class='rem'><center><button id='"+friends[i]+"'onClick='removeFriend(this.id)'>Remove</button></center></td></tr>";
 			tableContent+=row1+row2;
 		}
 		document.getElementById('displayFriendsTable').innerHTML = tableContent;
