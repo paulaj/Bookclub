@@ -114,7 +114,7 @@ div#chooseFriends{
 }
 
 span#profileRecommendButton{
-  background-color:#CCCCFF;
+  background-color:#8888FF;
   font-size:200%;
   color:#0000FF;
 }
@@ -122,15 +122,4 @@ span#profileRecommendButton{
 span#profileRecommendButton:hover{
   background-color:#FFFFFF;
   onclick
-}
-
-#displayFriendsTable tr.arbuttons{
-  margin-top: 0px;
-  height: 10px;
-  text-align: left;
-  vertical-align: top;
-}
-
-#displayFriendsTable tr td.friend_name{
-  margin-left: 10px;
 }
