@@ -112,3 +112,7 @@ div#chooseFriends{
 	width: 350;
 	modal: true;
 }
+
+div.spacer{
+  width:300px;
+}

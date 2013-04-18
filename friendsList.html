@@ -7,7 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="mystyle.css">
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" /> 	
 	<script type="text/javascript">
-	var friends = ['Usman Masood', 'Luly Alcaraz'];
+	var friends = ['Usman Masood', 'Luly Alcaraz', 'Mari Kobiashvili'];
 	$(document).ready(function() {
 		displayFriends();
 	});
@@ -18,7 +18,7 @@
 		var row2;
 		var tableContent="";
 		for(var i = 0; i < friends.length; i++){
-			row1 = "<tr><td><img src= 'sprite-gold-star'/>" +"</td><td><img src='"+friends[i]+".png'/></td><td class='friend_name'>" + friends[i] + "</td></tr>";
+			row1 = "<tr><td><img src= 'sprite-gold-star'/>" +"</td><td><a href='" + friends[i]+"profile.html'/><img src='"+friends[i]+".png'/></a></td><td class='friend_name'>" + friends[i] + "</td></tr>";
 			row2 = "<tr class='arbuttons'><td></td><td><button id='"+friends[i]+"'onClick='removeFriend(this.id)'>Remove</button></td></tr>";
 			tableContent+=row1+row2;
 		}
@@ -36,6 +36,7 @@
 	</script>	
 	</head>
 	
+    "<a href='" + friends[i]+"profile.html'/>"
 
 	<body>
 	
@@ -43,8 +44,8 @@
 	<ul>
 
 	<li><a href="friendsList.html" class="navBar">Friends</a></li>
-	<li><a href="readingList.html" class="navBar">My Reading List</a></li>
-	<li><a href="booksList.html" class="navBar">Books</a></li>
+	<li><a href="booklist.html" class="navBar">My Reading List</a></li>
+	<li><a href="booksearch.html" class="navBar">Books</a></li>
 	<li><a href="home.html" class="navBar">Logout</a></li>
 	
 	</ul>
