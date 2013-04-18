@@ -112,14 +112,3 @@ div#chooseFriends{
 	width: 350;
 	modal: true;
 }
-
-span#profileRecommendButton{
-  background-color:#8888FF;
-  font-size:200%;
-  color:#0000FF;
-}
-
-span#profileRecommendButton:hover{
-  background-color:#FFFFFF;
-  onclick
-}
