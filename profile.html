@@ -3,6 +3,8 @@
   
   <head>
     <link rel="stylesheet" type="text/css" href="mystyle.css">
+    <script type="text/javascript" src="external_js/jquery-1.9.0.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
     <script type="text/javascript" src="books.json"></script>
     <script type="text/javascript" src="autocomplete.js"></script>
   </head>
@@ -28,9 +30,9 @@
         </tr>
         <tr>
           <td></td>
-          <td><img id="profilePic" src="Mari Kobiashvili.png" /></td>
+          <td><img id="profilePic" src="Paula Jacobs.png" /></td>
           <td></td>
-          <td><h1 id="profileName">Mari Kobiashvili</h1></td>
+          <td><h1 id="profileName">Paula Jacobs</h1></td>
         </tr>
         <tr>
           <td></td>
@@ -44,11 +46,13 @@
           <td></td>
           <td colspan="4"><h2>Liked: <div id="profileLiked" style="display:inline"><a href="mobydick.html">Moby Dick</a></td>
         </tr>
-        <tr>
+        <!--<tr>
           <td></td>
-  <td colspan="2"><div id="profileRecommend"><span id="profileRecommendButton" onclick="document.getElementById('profileRecommendBookDiv').style.display='block';">Recommend a Book</span></div></td>
-        <td><div id="profileRecommendBookDiv" style="display:none"><input type="text" id="profileRecommendBook" /></div></td></tr>
+          <td colspan="2"><h2>Recommend a Book to Paula </h2></td><td><input type="text" id="profileRecommendBook" style="display:inline;"></input></td>-->
+  <!--<td colspan="5"><div id="profileRecommend"><span id="profileRecommendButton">Recommend a Book <div id="profileRecommendBookDiv" style="display:inline"><input type="text" id="profileRecommendBook" style="display:inline;font-size:150%;"></input></div></div></td>-->
+        <!--<td></td></tr>-->
       </table>
+      <div class="spacer" > </div> Recommend a Book to Paula: <input type="text" id="profileRecommendBook" style="display:inline;">Hello!</input>
     </div>
   </body>
 
