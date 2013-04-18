@@ -96,6 +96,16 @@ div.border{
   overflow:auto;
 }
 
+div.gap{
+  position:fixed;
+  top:0;
+  bottom:0;
+  left:0;
+  background-color:#EFFFFF;
+  width:300px;
+  overflow:auto;
+}
+
 div.content{
   position:absolute;
 }

@@ -8,7 +8,7 @@
 	<script type="text/javascript" src="http://static.titovanton.com/static/titovanton/libs/flexible-stars/jquery.flexible.stars.js"></script>
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
     <script type="text/javascript" src="books.json"></script>
-    <script type="text/javascript" src="autocomplete.js"></script>
+    <!--<script type="text/javascript" src="autocomplete.js"></script>-->
   </head>
 
   <body>
@@ -20,7 +20,7 @@
 	<li><a href="friendsList.html" class="navBar">Friends</a></li>
     <li><a href="booklist.html" class="navBar">My Library</a></li>
     <li><a href="booksearch.html" class="navBar">Find Books</a></li>
-    <li><a href="home.html" class="navBar">Logout</a></li>
+    <li><a href="home.html" class="navBar">Logout</a></li> 
 
     </ul>
 
@@ -52,14 +52,17 @@
       <!--<tr><td></td><td nowrap colspan="5">Recommend a Book to Mari: <input class="text" id="profileRecommendBook" style="display:inline;"></input></td></tr>-->
       
       </table>
-      <table id="searchTable">
+      <!--<table id="searchTable">
 		<tr class="friend_search">
 			<td>
 			</td>
 			<td nowrap>Recommend Mari a book!  <input type="text" id="BookRecommendBox" align="center" size="50" style="display:inline;" autofocus></td>
 			<td><button id="frndSrchBtn" onClick="searchFriends()"><span class="ui-icon ui-icon-search"></span></button></td>
 		</tr>
-	</table>
+	</table>-->
+      <table>
+      <tr><td></td><td nowrap colspan="5"><h2>Recommend a Book to Luly: <input class="text" id="profileRecommendBook" style="display:inline;"><input type="submit" onclick="alert('Book Recommended!');" value="Send"></input></input></h2</td></tr>
+      </table>
     </div>
   </body>
 
