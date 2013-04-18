@@ -5,6 +5,11 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>My Library</title>
     <link rel="stylesheet" type="text/css" href="mystyle.css">
+    <!--style data-->
+    <script type="text/javascript" src="external_js/jquery-1.9.0.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+	<script type="text/javascript" src="http://static.titovanton.com/static/titovanton/libs/flexible-stars/jquery.flexible.stars.js"></script>
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
   </head>
   
   <body>
@@ -20,6 +25,16 @@
 
     <div class="border"></div>
 	<div class="content"> 
+    
+    <table id="searchTable">
+		<tr class="friend_search">
+			<td>
+			</td>
+			<td nowrap><input type="text" id="BookRecommendBox" align="center" size="50" style="display:inline;" autofocus></td>
+			<td><button id="frndSrchBtn" onClick="searchFriends()"><span class="ui-icon ui-icon-search"></span></button></td>
+		</tr>
+	</table>
+    
 	<table>
 	<tr>
 		<td></td>
