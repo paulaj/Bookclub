@@ -7,6 +7,20 @@
     <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
     <script type="text/javascript" src="books.json"></script>
     <script type="text/javascript" src="autocomplete.js"></script>
+	<script src="http://www.parsecdn.com/js/parse-1.2.7.min.js"></script>
+	<script type="text/javascript">
+	$(function(){
+		Parse.initialize("qyuc8DGipEXPi3Fh32EKqnH2H563DPoFqcRjoa9h", "QTmatMd6trXNFaB0OaaPWEeCdCFpWm6YLv53dnn9");
+		var currentUser = Parse.User.current();
+		if (currentUser) {
+			$("#profileName").html(currentUser.getUsername());
+			$("#logout").html("Logout ("+currentUser.getUsername()+")");
+		} else {
+			window.location = "login.html";
+		}
+		
+	});
+	</script>
   </head>
 
   <body>
@@ -18,10 +32,9 @@
 	<li><a href="friendsList.html" class="navBar">Friends</a></li>
     <li><a href="booklist.html" class="navBar">My Library</a></li>
     <li><a href="booksearch.html" class="navBar">Find Books</a></li>
-    <li><a href="home.html" class="navBar">Logout</a></li>
+    <li><a href="home.html" class="navBar" id="logout">Logout</a></li>
 
     </ul>
-
     <div class="border"></div>
     <div class="content">  
       <table>
@@ -32,7 +45,7 @@
           <td></td>
           <td><img id="profilePic" src="Paula Jacobs.png" /></td>
           <td></td>
-          <td><h1 id="profileName">Paula Jacobs</h1></td>
+          <td><h1><div id="profileName"/></h1></td>
         </tr>
         <tr>
           <td></td>
@@ -47,7 +60,7 @@
           <td colspan="4"><h2>Liked: <div id="profileLiked" style="display:inline"><a href="mobydick.html">Moby Dick</a></td>
         </tr>
       
-      <tr><td></td><td nowrap colspan="5">Recommend a Book to Paula: <input class="text" id="profileRecommendBook" style="display:inline;"></input></td></tr>
+      <tr><td></td><td nowrap colspan="5">Recommend a Book to Paula: <input class="text" id="profileRecommendBook" value = "" style="display:inline;"></input></td></tr>
       </table>
     </div>
   </body>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<script type="text/javascript" src="external_js/jquery-1.9.0.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+	<link rel="stylesheet" type="text/css" href="mystyle.css">
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" /> 	
+	<script src="http://www.parsecdn.com/js/parse-1.2.7.min.js"></script>
+	<script type="text/javascript">
+	
+$(function() {
+
+  Parse.$ = jQuery;
+
+  // Initialize Parse with your Parse application javascript keys
+	Parse.initialize("qyuc8DGipEXPi3Fh32EKqnH2H563DPoFqcRjoa9h", "QTmatMd6trXNFaB0OaaPWEeCdCFpWm6YLv53dnn9");
+	
+	$("#login").click(function(){
+		
+		Parse.User.logIn($("#login-username").val(), $("#login-password").val(), {
+			success: function(user) {
+				window.location = "profile.html";
+			},
+			error: function(user, error) {
+				alert("Error: " + error.message);
+			}
+		})
+		return false;
+	});
+
+});
+
+
+  </script>
+  </head>
+  
+  </body>
+  <a href="signup.html">Don't have an account? Sign up!</a>
+  <form class="login-form">
+  <h2>Log In</h2>
+  <div class="error" style="display:none"></div>
+  <input type="text" id="login-username" placeholder="Enter Your Name" />
+  <input type="password" id="login-password" placeholder="Enter Your Password" />
+  <button id="login">Log In</button>
+  </form>
+  </body>
+ </html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<script type="text/javascript" src="external_js/jquery-1.9.0.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+	<link rel="stylesheet" type="text/css" href="mystyle.css">
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" /> 	
+	<script src="http://www.parsecdn.com/js/parse-1.2.7.min.js"></script>
+	<script type="text/javascript">
+	
+$(function() {
+
+  Parse.$ = jQuery;
+
+  // Initialize Parse with your Parse application javascript keys
+	Parse.initialize("qyuc8DGipEXPi3Fh32EKqnH2H563DPoFqcRjoa9h", "QTmatMd6trXNFaB0OaaPWEeCdCFpWm6YLv53dnn9");
+	
+	$("#signup").click(function(){
+		var user = new Parse.User();
+		user.set("username", $("#signup-username").val());
+		user.set("password", $("#signup-password").val());
+		var userbooks = new Array();
+		user.set("books", userbooks);
+		var userfriends = new Array();
+		user.set("friends", userfriends);
+		var userpic;
+		user.set("picture", userpic);
+		
+		user.signUp(null, {
+			success: function(user){
+				window.location = "profile.html";
+			},
+			error: function(user, error){
+				alert("Error: " + error.message);
+			}
+		});
+		return false;
+	});
+
+});
+
+
+  </script>
+  </head>
+  
+  </body>
+  <a href="login.html">Already have an account? Log in!</a>
+  <form class="signup-form">
+  <h2>Sign Up</h2>
+  <div class="error" style="display:none"></div>
+  <input type="text" id="signup-username" placeholder="Enter Your Name" />
+  <input type="password" id="signup-password" placeholder="Create a Password" />
+  <button id="signup">Sign Up</button>
+  </form>
+  </body>
+</html>
