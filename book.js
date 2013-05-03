@@ -2,9 +2,7 @@ $(document).ready(function() {
 	Parse.initialize("qyuc8DGipEXPi3Fh32EKqnH2H563DPoFqcRjoa9h", "QTmatMd6trXNFaB0OaaPWEeCdCFpWm6YLv53dnn9");
 	var Book = Parse.Object.extend("Book");
 	var Comment = Parse.Object.extend("Comment");
-	console.log(Parse.User.current());
 	var query = new Parse.Query(Book);
-	console.log($("#title").text());
 	query.equalTo("title", $("#title").text());
 	
 	query.first({
