@@ -8,8 +8,11 @@
     <!--style data-->
     <script type="text/javascript" src="external_js/jquery-1.9.0.min.js"></script>
 	<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
-	<script type="text/javascript" src="http://static.titovanton.com/static/titovanton/libs/flexible-stars/jquery.flexible.stars.js"></script>
+	<script src="http://ajax.cdnjs.com/ajax/libs/underscore.js/1.1.4/underscore-min.js"></script>
+    <script src="http://ajax.cdnjs.com/ajax/libs/backbone.js/0.3.3/backbone-min.js"></script>
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
+	<script src="http://www.parsecdn.com/js/parse-1.2.7.min.js"></script>
+	<script src = "booklist.js"></script>
   </head>
   
   <body>
@@ -41,15 +44,13 @@
 	
 	<td class="readinglist">	
 	
-    <h1>Reading: </h1><br/>
-	<a href="holes.html" class="listedBook">Holes by Louis Sachar</a><br/>
-	
-	<h1>Going to Read: </h1><br/>
-	<a href="mobydick.html" class="listedBook">Moby Dick by Herman Melville</a><br/>
+    <div id="reading"><h1>Reading: </h1></div><br/>
 
 	
-	<h1>Already Read: </h1><br/>
-	<a href="eragon.html" class="listedBook">Eragon by Christopher Paolini</a><br/>
+	<div id="goingToRead"><h1>Going to Read: </h1></div><br/>
+
+	
+	<div id="alreadyRead"><h1>Already Read: </h1></div><br/>
 	
 	</td>
 	

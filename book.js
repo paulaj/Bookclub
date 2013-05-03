@@ -57,6 +57,10 @@ $(document).ready(function() {
 	
 	$("#addToShelf").click(function(){
 		var shouldAdd = confirm("Add this book to your reading list?");
+		if (shouldAdd){
+			Parse.User.current().addUnique("goingToRead", object.get("title"));
+			Parse.User.current().save();
+		};
 	});
 	
 	$("#recommend").click(function(){

@@ -6,7 +6,7 @@ $(document).ready(function() {
 		success: function(results) {
 			for (var i = 0; i<results.length; i++){
 				console.log(results[i].get("url"));
-				$(".readinglist").append("<a href="+results[i].get('url')+".html class='listedBook'>"+results[i].get('title')+" by "+results[i].get('author')+"</a><br/><br/>");
+				$(".readinglist").append("<a href='"+results[i].get('url')+".html' class='listedBook'>"+results[i].get('title')+" by "+results[i].get('author')+"</a><br/><br/>");
 			}
 		},
 	});
