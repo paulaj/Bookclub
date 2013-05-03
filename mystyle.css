@@ -2,7 +2,17 @@ html{
 font-family:"Trebuchet MS";
 }
 
-ul{
+header,.header,#header{
+  background: red;
+  color: white;
+  font-size: 15px;
+}
+
+.navbar-inner{
+   background:red;
+}
+
+/*ul{
   list-style-type:none;
   margin:0;
   padding:0;
@@ -59,10 +69,10 @@ td.border{
 td.readinglist{
   right:0px;
   width:700px;
-}
+}*/
 
 
-h1{
+/*h1{
   font-size:200%;
 }
 
@@ -125,4 +135,4 @@ div#chooseFriends{
 
 td.rem{
   vertical-align:text-top;
-}
+}*/
