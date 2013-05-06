@@ -208,7 +208,7 @@ body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 20px;
   line-height: 20px;
-  color: #b8aeae;
+  color: #040505;
   background-color: #d5e3f7;
 }
 a {
@@ -620,7 +620,7 @@ h6 {
   font-family: inherit;
   font-weight: bold;
   line-height: 20px;
-  color: inherit;
+  color: #0d0c0c;
   text-rendering: optimizelegibility;
 }
 h1 small,
@@ -1723,7 +1723,7 @@ select:focus:invalid:focus {
 }
 .help-block,
 .help-inline {
-  color: #dcd7d7;
+  color: #263030;
 }
 .help-block {
   display: block;
