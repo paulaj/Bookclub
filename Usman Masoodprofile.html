@@ -28,9 +28,31 @@
     <script type="text/javascript" src="external_js/jquery-1.9.0.min.js"></script>
     <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
     <script>
+        $.extend({
+        getUrlVars : function() {
+            var vars = [], hash;
+            var hashes = window.location.href.slice(
+                    window.location.href.indexOf('?') + 1).split('&');
+            for ( var i = 0; i < hashes.length; i++) {
+                hash = hashes[i].split('=');
+                vars.push(hash[0]);
+                vars[hash[0]] = hash[1];
+            }
+            
+            return vars;
+        },
+        getUrlVar : function(name) {
+            return $.getUrlVars()[name];
+        }
+    });
     $(document).ready(
       function foo(){
-        var username="Usman Masood"
+        if ($.getUrlVar('username')) {
+            var username = $.getUrlVar('username');
+        } else {
+            var username = "Luly Alcaraz";
+        }
+        username = username.replace("%20"," ");
         $(".username").html(username);
         var source = username+".png";
         $("#profilePic").attr("src",source);
@@ -66,8 +88,8 @@
       <div class="container-fluid">
         <div class="row-fluid">
           <div class="span3">
-            <!--<img id="profilePic">-->
-            <img src="Usman Masood.png">
+            <img id="profilePic">
+            <!--<img src="Usman Masood.png">-->
           </div>
           <div class="span7">
             <h3><div class="username"></div></h3><br>
