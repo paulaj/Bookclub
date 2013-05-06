@@ -1,76 +1,77 @@
 <!DOCTYPE html>
 <html>
 	<head>
-    <meta charset="utf-8">
-    <title>Sign In to BookClub</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-	<script type="text/javascript" src="external_js/jquery-1.9.0.min.js"></script>
-	<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
-    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
-	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" /> 	
-	<script src="http://www.parsecdn.com/js/parse-1.2.7.min.js"></script>
-    <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
-	<script type="text/javascript">
-	
-$(function() {
+			<meta charset="utf-8">
+			<title>Sign In to BookClub</title>
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<meta name="description" content="">
+			<meta name="author" content="">
+			<script type="text/javascript" src="external_js/jquery-1.9.0.min.js"></script>
+			<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+			<link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+			<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" /> 	
+			<script src="http://www.parsecdn.com/js/parse-1.2.7.min.js"></script>
+			<link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+			<script type="text/javascript">
+			
+				$(function() {
 
-  Parse.$ = jQuery;
+				  Parse.$ = jQuery;
 
-  // Initialize Parse with your Parse application javascript keys
-	Parse.initialize("qyuc8DGipEXPi3Fh32EKqnH2H563DPoFqcRjoa9h", "QTmatMd6trXNFaB0OaaPWEeCdCFpWm6YLv53dnn9");
-	
-	$("#login").click(function(){
-		
-		Parse.User.logIn($("#login-username").val(), $("#login-password").val(), {
-			success: function(user) {
-				window.location = "profile.html";
-			},
-			error: function(user, error) {
-				alert("Error: " + error.message);
-			}
-		})
-		return false;
-	});
+				  // Initialize Parse with your Parse application javascript keys
+					Parse.initialize("qyuc8DGipEXPi3Fh32EKqnH2H563DPoFqcRjoa9h", "QTmatMd6trXNFaB0OaaPWEeCdCFpWm6YLv53dnn9");
+					
+					$("#login").click(function(){
+						
+						Parse.User.logIn($("#login-username").val(), $("#login-password").val(), {
+							success: function(user) {
+								window.location = "profile.html";
+							},
+							error: function(user, error) {
+								alert("Error: " + error.message);
+							}
+						})
+						return false;
+					});
 
-});
-
-
-  </script>
-<style>
-      body {
-        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
-      }
-  </style>
+				});
+		</script>
+		<style>
+			  body {
+				padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+			  }
+		</style>
   </head>
   
-  </body>
     <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="brand" href="#">BookClub</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-            </ul>
-          </div><!--/.nav-collapse -->
-        </div>
-      </div>
-    </div> 
-
-  <a href="signup.html">Don't have an account? Sign up!</a>
-  <form class="login-form">
-  <h2>Log In</h2>
-  <div class="error" style="display:none"></div>
-  <input type="text" id="login-username" placeholder="Enter Your Name" />
-  <input type="password" id="login-password" placeholder="Enter Your Password" />
-  <button id="login">Log In</button>
-  </form>
+		<div class="navbar navbar-inverse navbar-fixed-top">
+		  <div class="navbar-inner">
+			<div class="container">
+			  <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			  </button>
+			  <a class="brand" href="#">BookClub</a>
+			  <div class="nav-collapse collapse">
+				 <ul class="nav">
+					<li class="active"><a href="login.html" >Login</a></li>
+				</ul>
+			  </div><!--/.nav-collapse -->
+			</div>
+		  </div>
+		</div> 
+		
+		<div class="container">
+  
+			  <form class="login-form">
+			  <h2>Log In</h2>
+			  <div class="error" style="display:none"></div>
+			  <input type="text" id="login-username" placeholder="Enter Your Name" />
+			  <input type="password" id="login-password" placeholder="Enter Your Password" />
+			  <button id="login">Log In</button>
+			  </form>
+			  <a href="signup.html">Don't have an account? Sign up!</a>
+		</div>	  
   </body>
  </html>
