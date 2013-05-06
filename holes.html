@@ -1,9 +1,22 @@
 <head>
+<meta charset="utf-8">
+    <title>Bookclub</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+    <style>
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+    </style>
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <script type="text/javascript" src="external_js/jquery-1.9.0.min.js"></script>
 <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
 <script type="text/javascript" src="http://static.titovanton.com/static/titovanton/libs/flexible-stars/jquery.flexible.stars.js"></script>
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />   
-<link rel="stylesheet" href="mystyle.css">
 <script src="http://www.parsecdn.com/js/parse-1.2.7.min.js"></script>
    <style type="text/css" media="screen">
             i {display: inline-block}
@@ -21,6 +34,7 @@
 
 <body>
 
+
 <div id="chooseFriends" title="Recommend To:">
 	<form>
 	<fieldset>
@@ -30,22 +44,31 @@
 	</fieldset>
 	</form>
 </div>
+<div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="#">BookClub</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+				<li><a href="friendsList.html">Friends</a></li>
+				<li><a href="booklist.html">My Library</a></li>
+				<li><a href="booksearch.html" >Find Books</a></li>
+				<li><a href="home.html" >Logout</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
 
-    <ul>
-
-    <li><a href="friendsList.html" class="navBar">Friends</a></li>
-    <li><a href="booklist.html" class="navBar">My Library</a></li>
-    <li><a href="booksearch.html" class="navBar">Find Books</a></li>
-    <li><a href="home.html" id="logout" class="navBar"></a></li>
-
-    </ul>
-
-    <div class="border"></div>
-    <div class="content">  
+    <div class="container"> 
 	
 <table>
-<div class="border"></div>
-<div class="content">
+
         <tr>
 		<td></td>
 <td><h1><div id="title">Holes</div></h1></td></tr>
