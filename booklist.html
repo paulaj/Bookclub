@@ -13,7 +13,13 @@
       body {
         padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
       }
+	  .options li{
+		width:200px;
+		float: left;
+		display:inline;
+	  }
     </style>
+	
 	<script type="text/javascript" src="external_js/jquery-1.9.0.min.js"></script>
 	<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
 	<script src="http://www.parsecdn.com/js/parse-1.2.7.min.js"></script>
@@ -45,24 +51,30 @@
     </div>
 
     <div class="container">
-
-		<table id="searchTable">
-			<tr class="friend_search">
-				<td nowrap><input type="text" id="BookRecommendBox" align="center" size="50" style="display:inline;" autofocus></td>
-				<td><button id="frndSrchBtn" onClick="searchFriends()"><span class="ui-icon ui-icon-search"></span></button></td>
-			</tr>
-		</table>
+	
+		<ul class="options">
+			<li><a href="#reading">Reading</a></li>
+			<li><a href="#goingToRead">Going to Read</a></li>
+			<li><a href="#recommened">Recommended</a></li>
+			<li><a href="#alreadyRead">Already Read</a></li>
+		</ul> <br/>
 		
-		<div id="reading"><h2>Reading: </h2>
+		<div> <a id="reading"><h2>Reading: </h2> </a>
 
 		</div><br/>
-		<div id="goingToRead"><h2>Going to Read: </h2>
+		<div> <a id="#goingToRead"><h2>Going to Read: </h2></a>
 			<a href="mobydick.html" class="listedBook">Moby Dick by Herman Melville</a><br/>
-			
 		</div><br/>
-		<div id="alreadyRead"><h2>Already Read: </h2>
+		
+		<div> <a id="#recommended"><h2>Recommended: </h2> </a>
 		
 		</div><br/>
+		
+		<div> <a id="#alreadyRead"><h2>Already Read: </h2> </a>
+		
+		</div><br/>
+		
+		
 
     </div> 
 
