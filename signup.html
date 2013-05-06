@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html>
 	<head>
+    <meta charset="utf-8">
+    <title>Sign In to BookClub</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
 	<script type="text/javascript" src="external_js/jquery-1.9.0.min.js"></script>
 	<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
-	<link rel="stylesheet" type="text/css" href="mystyle.css">
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" /> 	
 	<script src="http://www.parsecdn.com/js/parse-1.2.7.min.js"></script>
+    <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
 	<script type="text/javascript">
 	
 $(function() {
@@ -41,9 +47,32 @@ $(function() {
 
 
   </script>
+  <style>
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+  </style>
   </head>
   
   </body>
+    <body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="#">BookClub</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div> 
+
   <a href="login.html">Already have an account? Log in!</a>
   <form class="signup-form">
   <h2>Sign Up</h2>
