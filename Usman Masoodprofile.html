@@ -14,8 +14,9 @@
       body {
         padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
       }
-      row {
-        padding-left: 200px;
+      .row-fluid {
+        padding-right: 0px;
+        margin-left:50px;
       }
     </style>
     <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
@@ -44,12 +45,18 @@
       </div>
     </div> 
     <div class="content">
-      <div class="row"><br>
-      <div class="span3"><br>
-        <img src="Usman Masood.png" />
-      </div>
-      <div class="span3"><br>
-        Usman Masood
+      <div class="container-fluid">
+        <div class="row-fluid">
+          <div class="span3" id="profilePic">
+            <img src="Usman Masood.png">
+          </div>
+          <div class="span5">
+            <h3>Usman Masood</h3>
+          </div>
+          <div class="span5">
+            <h5>Is reading</h5>
+          </div>
+        </div>
       </div>
         
       <!--<table>
