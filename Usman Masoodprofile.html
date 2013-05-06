@@ -21,7 +21,22 @@
         padding-right: 0px;
         margin-left:50px;
       }
+      .username {
+        display:inline;
+      }
     </style>
+    <script type="text/javascript" src="external_js/jquery-1.9.0.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+    <script>
+    $(document).ready(
+      function foo(){
+        var username="Usman Masood"
+        $(".username").html(username);
+        var source = username+".png";
+        $("#profilePic").attr("src",source);
+      }
+    );
+    </script>
     <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
   </head>
 
@@ -50,44 +65,19 @@
     <div class="content">
       <div class="container-fluid">
         <div class="row-fluid">
-          <div class="span3" id="profilePic">
+          <div class="span3">
+            <!--<img id="profilePic">-->
             <img src="Usman Masood.png">
           </div>
-          <div class="span5">
-            <h3>Usman Masood</h3>
+          <div class="span7">
+            <h3><div class="username"></div></h3><br>
+            <h5>Is reading <span id="reading"></span></h5><br>
+            <h5>Likes books such as <span id="likes"></span></h5><br>
+            <h5>Recommend a book to <div class="username"></div>: <input class="text" id="profileRecommendBook"><input type="submit" onclick="alert('Book Recommended!');" value="Send"></input></input></h5><br>
           </div>
-          <div class="span5">
-            <h5>Is reading</h5>
-          </div>
+          <div class="span">
         </div>
       </div>
-        
-      <!--<table>
-        <tr>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td><img id="profilePic" src="Usman Masood.png" /></td>
-          <td></td>
-          <td><h1 id="profileName">Usman Masood</h1></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-        </tr>        
-        <tr>
-          <td></td>
-          <td colspan="4"><h2>Is reading <div id="profileIsReading" style="display:inline"><a href="twilight.html">Twilight</a>, <a href="artemisfowl.html">Artemis Fowl</a></h2> </div></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td colspan="4"><h2>Liked: <div id="profileLiked" style="display:inline"><a href="mobydick.html">Moby Dick</a></td>
-        </tr>
-      </table>
-      <table>
-      <tr><td></td><td nowrap colspan="5"><h2>Recommend a Book to Luly: <input class="text" id="profileRecommendBook" style="display:inline;"><input type="submit" onclick="alert('Book Recommended!');" value="Send"></input></input></h2</td></tr>
-      </table>-->
     </div>
   </body>
 
