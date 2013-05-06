@@ -2,7 +2,9 @@ $(document).ready(function() {
 	Parse.initialize("qyuc8DGipEXPi3Fh32EKqnH2H563DPoFqcRjoa9h", "QTmatMd6trXNFaB0OaaPWEeCdCFpWm6YLv53dnn9");
 	var Book = Parse.Object.extend("Book");
 	var Comment = Parse.Object.extend("Comment");
+	console.log(Parse.User.current());
 	var query = new Parse.Query(Book);
+	console.log($("#title").text());
 	query.equalTo("title", $("#title").text());
 	
 	query.first({
@@ -57,10 +59,6 @@ $(document).ready(function() {
 	
 	$("#addToShelf").click(function(){
 		var shouldAdd = confirm("Add this book to your reading list?");
-		if (shouldAdd){
-			Parse.User.current().addUnique("goingToRead", object.get("title"));
-			Parse.User.current().save();
-		};
 	});
 	
 	$("#recommend").click(function(){
