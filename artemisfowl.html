@@ -47,7 +47,7 @@
           <div class="nav-collapse collapse">
             <ul class="nav">
 				<li><a href="friendsList.html">Friends</a></li>
-				<li class="active"><a href="booklist.html">My Library</a></li>
+				<li><a href="booklist.html">My Library</a></li>
 				<li><a href="booksearch.html" >Find Books</a></li>
 				<li><a href="home.html" >Logout</a></li>
             </ul>
@@ -58,56 +58,55 @@
 
     <div class="container">
 	
-<div id="chooseFriends" title="Recommend To:">
-	<form>
-	<fieldset>
-	<input type="checkbox" id="jason">Jason James</input></br>
-	<input type="checkbox" id="allison">Allison Abernathy</br>
-	<input type="checkbox" id="librarian">Librarian Lady</br>
-	</fieldset>
-	</form>
-</div>
+		<table>
+			<div class="border"></div>
+			<div class="content">
+					<tr>
+				<td></td>
+			<td><h1><div id="title">Artemis Fowl</div></h1></td></tr>
+			<tr>
+			<td></td>
+			<td><h2><div id="genre"/></h2></td></tr>
+			<tr>
+			<td></td>
+			<td><h2>Synopsis:</h2><div id="synopsis"/></td></tr>
+			<tr>
+			<td></td>
+			<td><h2>Rating:<div id="rate" class="rateBook"></div></h2><div id="avgRatingInfo"></div></td></tr>
+			<tr>
+			<td></td>
+			<input type="hidden" id="rating">
+			<td>
+			<form action="booklistArt.html">
+				<input type="submit" id="addToShelf" value="Add To Reading List">
+			</form>
+			<button type="button" id="recommend">Recommend</button></td></tr>
+			
+			<div id="chooseFriends" title="Recommend To:">
+				<form>
+				<fieldset>
+				<input type="checkbox" id="jason">Jason James</input></br>
+				<input type="checkbox" id="allison">Allison Abernathy</br>
+				<input type="checkbox" id="librarian">Librarian Lady</br>
+				</fieldset>
+				</form>
+			</div>
+		
+			<tr>
+			<td></td>
+			<td><div id="commentform"><h2>Comments:</h2>
+			<textarea type="text" style="height: 75px; width: 400px;" id="commentForm"></textarea>
+			<button type="button" id="addComment">Add Comment</button></div></td></tr>
 
-	
-<table>
-<div class="border"></div>
-<div class="content">
-        <tr>
-		<td></td>
-<td><h1><div id="title">Artemis Fowl</div></h1></td></tr>
-<tr>
-<td></td>
-<td><h2><div id="genre"/></h2></td></tr>
-<tr>
-<td></td>
-<td><h2>Synopsis:</h2><div id="synopsis"/></td></tr>
-<tr>
-<td></td>
-<td><h2>Rating:<div id="rate" class="rateBook"></div></h2><div id="avgRatingInfo"></div></td></tr>
-<tr>
-<td></td>
-<input type="hidden" id="rating">
-<td>
-<form action="booklistArt.html">
-    <input type="submit" id="addToShelf" value="Add To Reading List">
-</form>
-<button type="button" id="recommend">Recommend</button></td></tr>
+			<tr>
+			<td></td>
+			<td>
+			<div id="comments">
 
-<tr>
-<td></td>
-<td><div id="commentform"><h2>Comments:</h2>
-<textarea type="text" style="height: 75px; width: 400px;" id="commentForm"></textarea>
-<button type="button" id="addComment">Add Comment</button></div></td></tr>
+			</div>
+			</td></tr>
 
-<tr>
-<td></td>
-<td>
-<div id="comments">
-
-</div>
-</td></tr>
-
-</table>
-</div>
+		</table>
+	</div>
 </div>
 </body>
