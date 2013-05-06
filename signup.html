@@ -19,10 +19,10 @@ $(function() {
 		var user = new Parse.User();
 		user.set("username", $("#signup-username").val());
 		user.set("password", $("#signup-password").val());
-		var userbooks = new Array();
-		user.set("books", userbooks);
-		var userfriends = new Array();
-		user.set("friends", userfriends);
+		user.set("reading", []);
+		user.set("goingToRead", []);
+		user.set("read", []);
+		user.set("friends", []);
 		var userpic;
 		user.set("picture", userpic);
 		

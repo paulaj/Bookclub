@@ -1,16 +1,37 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE html>
 <html>
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="1138.51">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
-  </style>
-</head>
-<body>
-<p class="p1">You have logged out.</p>
-</body>
+	<head>
+	<script type="text/javascript" src="external_js/jquery-1.9.0.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+	<link rel="stylesheet" type="text/css" href="mystyle.css">
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" /> 	
+	<script src="http://www.parsecdn.com/js/parse-1.2.7.min.js"></script>
+	<script type="text/javascript">
+		Parse.initialize("qyuc8DGipEXPi3Fh32EKqnH2H563DPoFqcRjoa9h", "QTmatMd6trXNFaB0OaaPWEeCdCFpWm6YLv53dnn9");
+		Parse.User.logOut();
+		$(function() {
+
+  //Parse.$ = jQuery;
+  
+ // Parse.initialize("qyuc8DGipEXPi3Fh32EKqnH2H563DPoFqcRjoa9h", "QTmatMd6trXNFaB0OaaPWEeCdCFpWm6YLv53dnn9");
+  
+  var Book = Parse.Object.extend("Book");
+
+ /* var mobyDick = new Book({"title": "Moby Dick", "url": "mobydick", "author": "Herman Melville", "genre": "Adventure", "synopsis": "It's got whales and stuff", "numRatings": 0, "avgRating": 0, "comments": []});
+  var twilight = new Book({"title": "Twilight", "url": "twilight", "author": "Stephenie Meyer", "genre": "Romance", "synopsis": "A girl falls in love with a sparkly vampire", "numRatings": 0, "avgRating": 0, "comments": []});
+  var artemisFowl = new Book({"title": "Artemis Fowl", "url": "artemisFowl", "author": "Eoin Colfer", "genre": "Fantasy", "synopsis": "A teenage criminal mastermind captures a fairy and holds her for ransom", "numRatings": 0, "avgRating": 0, "comments": []});
+  var holes = new Book({"title": "Holes", "url": "holes", "author": "Louis Sachar", "genre": "Adventure", "synopsis": "Stanley is sent to juvenile delinquent camp, where everyone is forced to dig holes.", "numRatings": 0, "avgRating": 0, "comments": []});
+  var eragon = new Book({"title": "Eragon", "url": "eragon", "author": "Christopher Paolini", "genre": "Fantasy", "synopsis": "Eragon finds a dragon egg and goes off on adventures which are fairly similar to the plot of Star Wars.", "numRatings": 0, "avgRating": 0, "comments": []});
+    mobyDick.save();
+    twilight.save();
+  	artemisFowl.save();
+	holes.save();
+	eragon.save(); */
+	});
+	</script>
+	</head>
+	
+	<body>
+		Logged out!
+	</body>
 </html>

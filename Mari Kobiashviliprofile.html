@@ -2,29 +2,50 @@
   <!-- This is the profile.html file -->
   
   <head>
-    <link rel="stylesheet" type="text/css" href="mystyle.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!--<link rel="stylesheet" type="text/css" href="mystyle.css">-->
     <script type="text/javascript" src="external_js/jquery-1.9.0.min.js"></script>
-	<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
-	<script type="text/javascript" src="http://static.titovanton.com/static/titovanton/libs/flexible-stars/jquery.flexible.stars.js"></script>
-	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
+    <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
     <script type="text/javascript" src="books.json"></script>
     <!--<script type="text/javascript" src="autocomplete.js"></script>-->
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+    <style>
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+    </style>
+    <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+    
+    
   </head>
 
   <body>
 
     <!-- toolbar -->
 
-    <ul>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="#">BookClub</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+				<li><a href="friendsList.html">Friends</a></li>
+				<li class="active"><a href="booklist.html">My Library</a></li>
+				<li><a href="booksearch.html" >Find Books</a></li>
+				<li><a href="home.html" >Logout</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
 
-	<li><a href="friendsList.html" class="navBar">Friends</a></li>
-    <li><a href="booklist.html" class="navBar">My Library</a></li>
-    <li><a href="booksearch.html" class="navBar">Find Books</a></li>
-    <li><a href="home.html" class="navBar">Logout</a></li> 
-
-    </ul>
-
-    <div class="border"></div>
     <div class="content">  
       <table>
         <tr>
