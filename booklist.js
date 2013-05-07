@@ -6,6 +6,7 @@ $(function() {
 	else{
 		var user = Parse.User.current();
 		var Book = Parse.Object.extend("Book");
+		console.log(user.get("username"));
 		
 		if (user.get("reading")){
 		for (var i = 0; i < user.get("reading").length; i++){

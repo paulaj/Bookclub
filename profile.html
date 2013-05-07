@@ -27,41 +27,9 @@
     </style>
     <script type="text/javascript" src="external_js/jquery-1.9.0.min.js"></script>
     <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
-    <script>
-        $.extend({
-        getUrlVars : function() {
-            var vars = [], hash;
-            var hashes = window.location.href.slice(
-                    window.location.href.indexOf('?') + 1).split('&');
-            for ( var i = 0; i < hashes.length; i++) {
-                hash = hashes[i].split('=');
-                vars.push(hash[0]);
-                vars[hash[0]] = hash[1];
-            }
-            
-            return vars;
-        },
-        getUrlVar : function(name) {
-            return $.getUrlVars()[name];
-        }
-    });
-    $(document).ready(
-      function foo(){
-        if ($.getUrlVar('username')) {
-            var username = $.getUrlVar('username');
-        } else {
-            alert("That user doesn't exist!")
-            window.location = "friendsList.html";
-            var username = "Luly Alcaraz";
-        }
-        username = username.replace("%20"," ");
-        $(".username").html(username);
-        var source = username+".png";
-        $("#profilePic").attr("src",source);
-      }
-    );
-    </script>
     <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+	<script src="http://www.parsecdn.com/js/parse-1.2.7.min.js"></script>
+	<script src="profile.js"></script>
   </head>
 
   <body>

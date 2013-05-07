@@ -9,7 +9,7 @@ $(document).ready(function() {
 		success: function(object){
 		$(function(){
 		//Currently doesn't change when you add a rating until the page is refreshed
-		$("#avgRatingInfo").html("Average: "+object.get("avgRating")+", based on "+object.get("numRatings")+" votes");
+		$("#avgRatingInfo").html("Average: "+Math.round(object.get("avgRating")*10)/10+", based on "+object.get("numRatings")+" votes");
 		$("#title").html(object.get("title"));
 		$("#genre").html("Genre: "+object.get("genre"));
 		$("#synopsis").html(object.get("synopsis"));
@@ -49,6 +49,15 @@ $(document).ready(function() {
 			var totalRating = object.get("avgRating")*object.get("numRatings");
 			object.set("numRatings", object.get("numRatings") + 1);
 			console.log($("#rating").val());
+			if (parseInt($("#rating").val()) >= 4){
+				console.log(Parse.User.current().get("liked"));
+				Parse.User.current().addUnique("liked", object.get("title"));
+				Parse.User.current().save();
+				console.log(Parse.User.current().get("liked"));
+			} else {
+				Parse.User.current().remove("liked", object.get("title"));
+				Parse.User.current().save();
+			}
 			object.set("avgRating", (parseInt($("#rating").val())+totalRating)/object.get("numRatings"));
 			object.save();
 		}

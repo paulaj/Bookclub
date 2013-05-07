@@ -26,14 +26,18 @@
 	var currentUser = Parse.User.current();
 	var friends = [];
 	var users = [];
-    var User = Parse.Object.extend("User");
-    var user_query = new Parse.Query(User);
+    var user_query = new Parse.Query(Parse.User);
+	user_query.find({
+		success: function(object){
+			console.log(object.length);
+		}
+	});
     user_query.notEqualTo("username", currentUser.get("username"));
 	user_query.find({
 		success: function(results){
-			//results has the lsit of all users
+			//results has the list of all users
 			for(var u = 0; u < results.length; u++){
-				//console.log(results[u].get("username"));
+				console.log(results[u].get("username"));
 				users.push(results[u].get("username"));
 			}
 		}
@@ -48,9 +52,12 @@
 	}
 
 	$(document).ready(function() {
-		displayFriends();
+		if (friends != undefined && friends != []){
+			console.log(friends);
+			displayFriends();
+		}
 	});
-
+ 
 	function displayFriends(){
 		$("#displayFriendsTable").empty();
 		var row1;
@@ -100,8 +107,8 @@ var tableContent="";
 //var url = lost_friend.replace(' ', '');
 var url = lost_friend + 'profile.html';
 
-//console.log(lost_friend);
-//console.log(users);
+console.log(lost_friend);
+console.log(users);
 //console.log(users.indexOf(lost_friend));
 if(users.indexOf(lost_friend) === -1 || friends.indexOf(lost_friend) > -1){
 	displayFriends();
