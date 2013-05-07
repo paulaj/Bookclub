@@ -69,7 +69,7 @@
 		//console.log(friends);
 		if(friends.indexOf(delete_person) > -1){
 			friends.splice(friends.indexOf(delete_person), 1);
-			currentUser.remove("username", delete_person);
+			currentUser.remove("friends", delete_person);
 			currentUser.save();
 		}
 		console.log(currentUser.get("friends"));
@@ -80,7 +80,7 @@ function addFriend(lost_friend){
 var new_buddy = lost_friend.replace('_add', '');
 if(users.indexOf(new_buddy) > -1 && friends.indexOf(new_buddy) === -1){
 	friends.push(new_buddy);
-	currentUser.add("username", lost_friend);
+	currentUser.add("friends", lost_friend);
 	currentUser.save();
 }
 console.log(currentUser.get("friends"));
