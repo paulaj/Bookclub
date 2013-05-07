@@ -1,44 +1,72 @@
-<html>
-  <!-- This is the profile.html file -->
-  
+
+<!DOCTYPE html>
+<html lang="en">
   <head>
-	<meta charset="utf-8">
+    <meta charset="utf-8">
     <title>Bookclub</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <!-- <link rel="stylesheet" type="text/css" href="mystyle.css"> -->
+    <!-- Le styles -->
     <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
     <style>
       body {
         padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
       }
+      .container-fluid{
+        padding-top: 50px;
+      }
+      .row-fluid {
+        padding-right: 0px;
+        margin-left:50px;
+      }
+      .username {
+        display:inline;
+      }
     </style>
     <script type="text/javascript" src="external_js/jquery-1.9.0.min.js"></script>
     <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
-    <script type="text/javascript" src="books.json"></script>
-    <script type="text/javascript" src="autocomplete.js"></script>
-	<script src="http://www.parsecdn.com/js/parse-1.2.7.min.js"></script>
-	<script type="text/javascript">
-	$(function(){
-		Parse.initialize("qyuc8DGipEXPi3Fh32EKqnH2H563DPoFqcRjoa9h", "QTmatMd6trXNFaB0OaaPWEeCdCFpWm6YLv53dnn9");
-		var currentUser = Parse.User.current();
-		if (currentUser) {
-			$("#profileName").html(currentUser.getUsername());
-			$("#logout").html("Logout ("+currentUser.getUsername()+")");
-		} else {
-			window.location = "login.html";
-		}
-		
-	});
-	</script>
+    <script>
+        $.extend({
+        getUrlVars : function() {
+            var vars = [], hash;
+            var hashes = window.location.href.slice(
+                    window.location.href.indexOf('?') + 1).split('&');
+            for ( var i = 0; i < hashes.length; i++) {
+                hash = hashes[i].split('=');
+                vars.push(hash[0]);
+                vars[hash[0]] = hash[1];
+            }
+            
+            return vars;
+        },
+        getUrlVar : function(name) {
+            return $.getUrlVars()[name];
+        }
+    });
+    $(document).ready(
+      function foo(){
+        if ($.getUrlVar('username')) {
+            var username = $.getUrlVar('username');
+        } else {
+            alert("That user doesn't exist!")
+            window.location = "friendsList.html";
+            var username = "Luly Alcaraz";
+        }
+        username = username.replace("%20"," ");
+        $(".username").html(username);
+        var source = username+".png";
+        $("#profilePic").attr("src",source);
+      }
+    );
+    </script>
+    <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
   </head>
 
   <body>
 
-    <!-- toolbar -->
-	<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
           <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -49,42 +77,30 @@
           <a class="brand" href="#">BookClub</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-				<li><a href="friendsList.html">Friends</a></li>
-				<li class="active"><a href="booklist.html">My Library</a></li>
-				<li><a href="booksearch.html" >Find Books</a></li>
-				<li><a href="logout.html" >Logout</a></li>
+            <li><a href="friendsList.html">Friends</a></li>
+            <li class="active"><a href="booklist.html">My Library</a></li>
+            <li><a href="booksearch.html" >Find Books</a></li>
+            <li><a href="home.html" >Logout</a></li>
             </ul>
-          </div>
+          </div><!--/.nav-collapse -->
         </div>
       </div>
-    </div>
-
-    
-      <table>
-        <tr>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td><img id="profilePic" src="Paula Jacobs.png" /></td>
-          <td></td>
-          <td><h1><div id="profileName"/></h1></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-        </tr>        
-        <tr>
-          <td></td>
-          <td colspan="4"><h2>Is reading <div id="profileIsReading" style="display:inline"><a href="twilight.html">Twilight</a>, <a href="artemisfowl.html">Artemis Fowl</a></h2> </div></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td colspan="4"><h2>Liked: <div id="profileLiked" style="display:inline"><a href="mobydick.html">Moby Dick</a></td>
-        </tr>
-      
-      <tr><td></td><td nowrap colspan="5">Recommend a Book to Paula: <input class="text" id="profileRecommendBook" value = "" style="display:inline;"></input></td></tr>
-      </table>
+    </div> 
+    <div class="content">
+      <div class="container-fluid">
+        <div class="row-fluid">
+          <div class="span3">
+            <img id="profilePic">
+          </div>
+          <div class="span7">
+            <h3><div class="username"></div></h3><br>
+            <h5>Is reading <span id="reading"></span></h5><br>
+            <h5>Likes books such as <span id="likes"></span></h5><br>
+            <h5>Recommend a book to <div class="username"></div>: <input class="text" id="profileRecommendBook"><input type="submit" onclick="alert('Book Recommended!');" value="Send"></input></input></h5><br>
+          </div>
+          <div class="span">
+        </div>
+      </div>
     </div>
   </body>
 

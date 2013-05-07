@@ -1,0 +1,172 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf510
+{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red166\green23\blue0;\red51\green122\blue135;\red128\green18\blue178;
+\red35\green110\blue37;\red0\green0\blue255;}
+\margl1440\margr1440\vieww12240\viewh15840\viewkind1
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\tx7280\tx7840\tx8400\tx8960\tx9520\tx10080\tx10640\tx11200\tx11760\tx12320\tx12880\tx13440\tx14000\tx14560\tx15120\tx15680\tx16240\tx16800\tx17360\tx17920\tx18480\tx19040\tx19600\tx20160\tx20720\tx21280\tx21840\tx22400\tx22960\tx23520\tx24080\tx24640\tx25200\tx25760\tx26320\tx26880\tx27440\tx28000\tx28560\tx29120\tx29680\tx30240\tx30800\tx31360\tx31920\tx32480\tx33040\tx33600\tx34160\tx34720\tx35280\tx35840\tx36400\tx36960\tx37520\tx38080\tx38640\tx39200\tx39760\tx40320\tx40880\tx41440\tx42000\tx42560\tx43120\tx43680\tx44240\tx44800\tx45360\tx45920\tx46480\tx47040\tx47600\tx48160\tx48720\tx49280\tx49840\tx50400\tx50960\tx51520\tx52080\tx52640\tx53200\tx53760\tx54320\tx54880\tx55440\tx56000\pardirnatural
+
+\f0\fs22 \cf2 \CocoaLigature0 <!DOCTYPE\cf0  html\cf2 >\cf0 \
+\cf2 <html>\cf0 \
+	\cf2 <head>\cf0 \
+	\cf2 <meta\cf0  \cf3 charset\cf0 =\cf4 "utf-8"\cf2 >\cf0 \
+    \cf2 <title>\cf0 Bookclub\cf2 </title>\cf0 \
+    \cf2 <meta\cf0  \cf3 name\cf0 =\cf4 "viewport"\cf0  \cf3 content\cf0 =\cf4 "width=device-width, initial-scale=1.0"\cf2 >\cf0 \
+    \cf2 <meta\cf0  \cf3 name\cf0 =\cf4 "description"\cf0  \cf3 content\cf0 =\cf4 ""\cf2 >\cf0 \
+    \cf2 <meta\cf0  \cf3 name\cf0 =\cf4 "author"\cf0  \cf3 content\cf0 =\cf4 ""\cf2 >\cf0 \
+\
+    \cf5 <!-- Le styles -->\cf0 \
+    \cf2 <link\cf0  \cf3 href\cf0 =\cf4 "bootstrap/css/bootstrap.css"\cf0  \cf3 rel\cf0 =\cf4 "stylesheet"\cf2 >\cf0 \
+    \cf2 <style>\cf0 \
+      body \{\
+        padding-top: \cf6 60\cf0 px; /* \cf6 60\cf0 px to make the container go all the way to the bottom of the topbar */\
+      \}\
+    \cf2 </style>\cf0 \
+    \cf2 <link\cf0  \cf3 href\cf0 =\cf4 "bootstrap/css/bootstrap.min.css"\cf0  \cf3 rel\cf0 =\cf4 "stylesheet"\cf2 >\cf0 \
+	\
+	\cf2 <script\cf0  \cf3 src\cf0 =\cf4 "http://www.parsecdn.com/js/parse-1.2.7.min.js"\cf2 ></script>\cf0 \
+	\cf2 <script\cf0  \cf3 type\cf0 =\cf4 "text/javascript"\cf0  \cf3 src\cf0 =\cf4 "external_js/jquery-1.9.0.min.js"\cf2 ></script>\cf0 \
+	\cf2 <script\cf0  \cf3 src\cf0 =\cf4 "http://code.jquery.com/ui/1.10.2/jquery-ui.js"\cf2 ></script>\cf0 \
+	\cf2 <script\cf0  \cf3 type\cf0 =\cf4 "text/javascript"\cf0  \cf3 src\cf0 =\cf4 "http://static.titovanton.com/static/titovanton/libs/flexible-stars/jquery.flexible.stars.js"\cf2 ></script>\cf0 \
+	\cf2 <link\cf0  \cf3 rel\cf0 =\cf4 "stylesheet"\cf0  \cf3 href\cf0 =\cf4 "http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css"\cf0  \cf2 />\cf0  	\
+	\cf2 <script\cf0  \cf3 type\cf0 =\cf4 "text/javascript"\cf2 >\cf0 \
+	Parse.initialize("qyuc8DGipEXPi3Fh32EKqnH2H563DPoFqcRjoa9h", \cf4 "QTmatMd6trXNFaB0OaaPWEeCdCFpWm6YLv53dnn9"\cf0 );\
+	var currentUser = Parse.User.current();\
+	var friends = [];\
+	var users = [];\
+    var User = Parse.Object.extend(\cf4 "User"\cf0 );\
+    var user_query = new Parse.Query(User);\
+    user_query.notEqualTo(\cf4 "username"\cf0 , currentUser.get(\cf4 "username"\cf0 ));\
+	user_query.find(\{\
+		success: function(results)\{\
+			//results has the lsit of all users\
+			for(var u = \cf6 0\cf0 ; u \cf2 <\cf0  \cf3 results\cf0 .length; u++)\{\
+				//console.log(\cf3 results\cf0 [u].get(\cf4 "username"\cf0 ));\
+				users.push(\cf3 results\cf0 [u].get(\cf4 "username"\cf0 ));\
+			\}\
+		\}\
+	\});\
+\
+	if (currentUser) \{\
+		friends = currentUser.get(\cf4 "friends"\cf0 );\
+		console.log(currentUser.get(\cf4 "friends"\cf0 ));\
+		console.log(friends);\
+	\} else \{\
+		window.location = \cf4 "login.html"\cf0 ;\
+	\}\
+\
+	$(document).ready(function() \{\
+		displayFriends();\
+	\});\
+\
+	function displayFriends()\{\
+		$(\cf4 "#displayFriendsTable"\cf0 ).empty();\
+		var row1;\
+		var row2;\
+		var tableContent=\cf4 ""\cf0 ;\
+		\cf3 for\cf0 (var i = \cf6 0\cf0 ; i \cf2 <\cf0  friends.length; i++)\{\
+			row1 = \cf4 "<tr><td><img src= 'sprite-gold-star'/>"\cf0  +\cf4 "</td><td><a href='"\cf0  + friends[i]+\cf4 "profile.html'/><img src='"\cf0 +friends[i]+\cf4 ".png' alt='"\cf0 +friends[i]+\cf4 "'/></a></td><td></td><td nowrap class='friend_name'><h3><a href='"\cf0  + friends[i]+\cf4 "profile.html'/>"\cf0  + friends[i] + \cf4 "</a></h3></td></tr>"\cf0 ;\
+			row2 = \cf4 "<tr class='arbuttons'><td></td><td class='rem'><center><button id='"\cf0 +friends[i]+\cf4 "'onClick='removeFriend(this.id)'>Remove</button></center></td></tr>"\cf0 ;\
+			tableContent+=row1+row2;\
+		\}\
+		document.getElementById('displayFriendsTable').innerHTML = tableContent;\
+	\}\
+\
+	function removeFriend(delete_person)\{\
+		//console.log(delete_person);\
+		//console.log(friends);\
+		if(friends.indexOf(delete_person) \cf2 >\cf0  \cf6 -1\cf0 )\{\
+			friends.splice(friends.indexOf(delete_person), \cf6 1\cf0 );\
+			currentUser.remove("friends", delete_person);\
+			currentUser.save();\
+		\}\
+		console.log(currentUser.get(\cf4 "friends"\cf0 ));\
+		displayFriends();\
+	\}\
+    \
+function addFriend(lost_friend)\{\
+var new_buddy = lost_friend.replace('_add', '');\
+if(users.indexOf(new_buddy) \cf2 >\cf0  \cf6 -1\cf0  \cf6 && friends.indexOf(new_buddy) === -1)\{\
+	friends.push(new_buddy);\cf0 \
+	currentUser.add("friends", lost_friend);\
+	currentUser.save();\
+\}\
+console.log(currentUser.get(\cf4 "friends"\cf0 ));\
+displayFriends();\
+\}\
+\
+$(function() \{\
+    var availableTags = users;\
+    $(\cf4 "#friendSearchBox"\cf0 ).autocomplete(\{source: availableTags\});   \
+\});\
+\
+function searchFriends(lost_friend)\{\
+$(\cf4 "#displayFriendsTable"\cf0 ).empty();\
+var row1;\
+var row2;\
+var tableContent=\cf4 ""\cf0 ;\
+//var url = lost_friend.replace(' ', '');\
+var url = lost_friend + 'profile.html';\
+\
+//console.log(lost_friend);\
+//console.log(users);\
+//console.log(users.indexOf(lost_friend));\
+if(users.indexOf(lost_friend) === \cf6 -1\cf0  || friends.indexOf(lost_friend) \cf2 >\cf0  \cf6 -1\cf0 )\{\
+	displayFriends();\
+\}\
+else if(users.indexOf(lost_friend) \cf2 >\cf0  \cf6 -1\cf0 )\{\
+	console.log('hello')\
+	row1 = "<tr><td><img src= 'sprite-gold-star'/>" +\cf4 "</td><td><a href='"\cf0  + lost_friend+\cf4 "profile.html'/><img src='"\cf0 +lost_friend+\cf4 ".png' alt='"\cf0 +lost_friend+\cf4 "'/></a></td><td></td><td nowrap class='friend_name'><h2><a href='"\cf0  + lost_friend+\cf4 "profile.html'/>"\cf0  + lost_friend + \cf4 "</a></h2></td></tr>"\cf0 ;\
+	row2 = \cf4 "<tr class='arbuttons'><td></td><td class='add'><center><button id='"\cf0 +lost_friend+\cf4 "'onClick='addFriend(this.id)'>Add</button></center></td></tr>"\cf0 ;\
+	tableContent+=row1+row2;\
+\}\
+else\{\
+tableContent = \cf4 "<tr><td></td><td colspan='5'>No user matching that name exists.</td></tr>"\cf0 ;\
+\}\
+//console.log(tableContent)\
+document.getElementById('displayFriendsTable').innerHTML = tableContent;\
+\}\
+\
+    \
+	\cf2 </script>\cf0 	\
+	\cf2 </head>\cf0 \
+    \cf2 <body>\cf0 \
+	\cf2 <div\cf0  \cf3 class\cf0 =\cf4 "navbar navbar-inverse navbar-fixed-top"\cf2 >\cf0 \
+      \cf2 <div\cf0  \cf3 class\cf0 =\cf4 "navbar-inner"\cf2 >\cf0 \
+        \cf2 <div\cf0  \cf3 class\cf0 =\cf4 "container"\cf2 >\cf0 \
+          \cf2 <button\cf0  \cf3 type\cf0 =\cf4 "button"\cf0  \cf3 class\cf0 =\cf4 "btn btn-navbar"\cf0  data-toggle=\cf4 "collapse"\cf0  data-target=\cf4 ".nav-collapse"\cf2 >\cf0 \
+            \cf2 <span\cf0  \cf3 class\cf0 =\cf4 "icon-bar"\cf2 ></span>\cf0 \
+            \cf2 <span\cf0  \cf3 class\cf0 =\cf4 "icon-bar"\cf2 ></span>\cf0 \
+            \cf2 <span\cf0  \cf3 class\cf0 =\cf4 "icon-bar"\cf2 ></span>\cf0 \
+          \cf2 </button>\cf0 \
+          \cf2 <a\cf0  \cf3 class\cf0 =\cf4 "brand"\cf0  \cf3 href\cf0 =\cf4 "#"\cf2 >\cf0 BookClub\cf2 </a>\cf0 \
+          \cf2 <div\cf0  \cf3 class\cf0 =\cf4 "nav-collapse collapse"\cf2 >\cf0 \
+            \cf2 <ul\cf0  \cf3 class\cf0 =\cf4 "nav"\cf2 >\cf0 \
+				\cf2 <li\cf0  \cf3 class\cf0 =\cf4 "active"\cf2 ><a\cf0  \cf3 href\cf0 =\cf4 "friendsList.html"\cf2 >\cf0 Friends\cf2 </a></li>\cf0 \
+				\cf2 <li><a\cf0  \cf3 href\cf0 =\cf4 "booklist.html"\cf2 >\cf0 My Library\cf2 </a></li>\cf0 \
+				\cf2 <li><a\cf0  \cf3 href\cf0 =\cf4 "booksearch.html"\cf0  \cf2 >\cf0 Find Books\cf2 </a></li>\cf0 \
+				\cf2 <li><a\cf0  \cf3 href\cf0 =\cf4 "logout.html"\cf0  \cf2 >\cf0 Logout\cf2 </a></li>\cf0 \
+            \cf2 </ul>\cf0 \
+          \cf2 </div>\cf5 <!--/.nav-collapse -->\cf0 \
+        \cf2 </div>\cf0 \
+      \cf2 </div>\cf0 \
+    \cf2 </div>\cf0 \
+\
+    \cf2 <div\cf0  \cf3 class\cf0 =\cf4 "container"\cf2 >\cf0 \
+	\
+\
+		\cf2 <table\cf0  \cf3 id\cf0 =\cf4 "searchTable"\cf2 >\cf0 \
+			\cf2 <tr\cf0  \cf3 class\cf0 =\cf4 "friend_search"\cf2 >\cf0 \
+				\cf2 <td>\cf0 \
+				\cf2 </td>\cf0 \
+				\cf2 <td><input\cf0  \cf3 type\cf0 =\cf4 "text"\cf0  \cf3 id\cf0 =\cf4 "friendSearchBox"\cf0  \cf3 align\cf0 =\cf4 "center"\cf0  \cf3 size\cf0 =\cf4 "75"\cf0  \cf3 autofocus\cf2 ></td>\cf0 \
+				\cf2 <td><button\cf0  \cf3 id\cf0 =\cf4 "frndSrchBtn"\cf0  \cf3 onclick\cf0 =\cf4 "searchFriends(document.getElementById('friendSearchBox').value)"\cf2 ><span\cf0  \cf3 class\cf0 =\cf4 "ui-icon ui-icon-search"\cf2 ></span></button></td>\cf0 \
+			\cf2 </tr>\cf0 \
+		\cf2 </table>\cf0 \
+		\cf2 <table\cf0  \cf3 id\cf0 =\cf4 "displayFriendsTable"\cf2 >\cf0 \
+		\cf2 </table>\cf0 \
+	\cf2 </div>\cf0 \
+	\cf2 </body>\cf0 \
+\cf2 </html>\cf0 \
+\
+\
+}
