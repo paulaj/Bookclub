@@ -50,6 +50,8 @@
         if ($.getUrlVar('username')) {
             var username = $.getUrlVar('username');
         } else {
+            alert("That user doesn't exist!")
+            window.location = "friendsList.html";
             var username = "Luly Alcaraz";
         }
         username = username.replace("%20"," ");
