@@ -10,21 +10,24 @@ $(function() {
 		if (user.get("reading")){
 		for (var i = 0; i < user.get("reading").length; i++){
 			var readingQuery = new Parse.Query(Book);
+			console.log(user.get("reading")[i]);
 			var book = readingQuery.equalTo("title", user.get("reading")[i]);
 			book.first({
 				success: function(object){
-					$("#reading").append("<a href='"+object.get("url")+".html' class='listedBook'>"+object.get("title")+" by "+object.get("author")+"</a><button type='button' class='done' id="+object.get("url")+">Done Reading</button></br>");
+					$("#reading").append("<div id='"+object.get("url")+"'div><a href='"+object.get("url")+".html' class='listedBook'>"+object.get("title")+" by "+object.get("author")+"</a><button type='button' class='done' id="+object.get("url")+">Done Reading</button></br></div>");
 				},
 			});
 		}
 		} 
-		if (user.get("goingToRead")){
+		if (user.get("goingToRead").length > 0){
+		console.log(user.get("goingToRead"));
 		for (var i = 0; i < user.get("goingToRead").length; i++){
 			var goingToReadQuery = new Parse.Query(Book);
+			console.log(user.get("goingToRead")[i]);
 			var book = goingToReadQuery.equalTo("title", user.get("goingToRead")[i]);
 			book.first({
 				success: function(object){
-					$("#goingToRead").append("<a href='"+object.get("url")+".html' class='listedBook'>"+object.get("title")+" by "+object.get("author")+"</a><button type='button' class='currentlyreading' id="+object.get("url")+">Currently Reading</button></br>");
+					$("#goingToRead").append("<div id='"+object.get("url")+"div'><a href='"+object.get("url")+".html' class='listedBook'>"+object.get("title")+" by "+object.get("author")+"</a><button type='button' class='currentlyReading' id="+object.get("url")+">Currently Reading</button></br></div>");
 				},
 			});
 		}
@@ -35,34 +38,39 @@ $(function() {
 			var book = readQuery.equalTo("title", user.get("read")[i]);
 			book.first({
 				success: function(object){
-					$("#alreadyRead").append("<a href='"+object.get("url")+".html' class='listedBook'>"+object.get("url")+" by "+object.get("author")+"</a></br>");
+					$("#alreadyRead").append("<div id='"+object.get('url')+"div'><a href='"+object.get("url")+".html' class='listedBook'>"+object.get("title")+" by "+object.get("author")+"</br></div>");
 				},
 			});
 		}
 		} 
 	
 		$(document).ready($(".currentlyreading")).click(function(){
+			console.log("yo bucket");
 			console.log(this.activeElement);
 			console.log(this.activeElement.id);
 			var goingToReadQuery = new Parse.Query(Book);
 			var book = goingToReadQuery.equalTo("url", this.activeElement.id);
 			book.first({
 				success: function(object){
-					user.addUnique("reading", object);
-					user.remove("goingToRead", object);
+					user.addUnique("reading", object.get("title"));
+					user.remove("goingToRead", object.get("title"));
+					console.log(user.get("goingToRead"));
 					user.save();
-					$("#reading").append("<a href='"+object.get("url")+".html' class='listedBook'>"+object.get("title")+" by "+object.get("author")+"</a><button type='button' class='done' id="+object.get("title")+">Done Reading</button></br>");
-					if (user.get("goingToRead")){
-					for (var i = 0; i < user.get("goingToRead").length; i++){
-					var goingToReadQuery = new Parse.Query(Book);
-					var book = goingToReadQuery.equalTo("title", user.get("goingToRead")[i]);
-					book.first({
-						success: function(object){
-							$("#goingToRead").append("<a href='"+object.get("url")+".html' class='listedBook'>"+object.get("title")+" by "+object.get("author")+"</a><button type='button' class='currentlyreading' id="+object.get("url")+">Currently Reading</button></br>");
-						},
-					});
-					}
-					}
+					$("#reading").append("<div id='"+object.get("url")+"div'><a href='"+object.get("url")+".html' class='listedBook'>"+object.get("title")+" by "+object.get("author")+"</a><button type='button' class='done' id="+object.get("url")+">Done Reading</button></br></div>");
+				}
+			});
+		});
+		
+		$(document).ready($(".done")).click(function(){
+			var readingQuery = new Parse.Query(Book);
+			var book = goingToReadQuery.equalTo("url", this.activeElement.id);
+			book.first({
+				success: function(object){
+					user.addUnique("read", object.get("title"));
+					user.remove("reading", object.get("title"));
+					console.log(user.get("reading"));
+					user.save();
+					$("#alreadyRead").append("<div id='"+object.get("url")+"div'><a href='"+object.get("url")+".html' class='listedBook'>"+object.get("title")+" by "+object.get("author")+"</br></div>");
 				}
 			});
 		});
