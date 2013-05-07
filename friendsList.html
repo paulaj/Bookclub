@@ -16,13 +16,37 @@
     </style>
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	
+	<script src="http://www.parsecdn.com/js/parse-1.2.7.min.js"></script>
 	<script type="text/javascript" src="external_js/jquery-1.9.0.min.js"></script>
 	<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
 	<script type="text/javascript" src="http://static.titovanton.com/static/titovanton/libs/flexible-stars/jquery.flexible.stars.js"></script>
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" /> 	
 	<script type="text/javascript">
-	var friends = ['Usman Masood', 'Luly Alcaraz', 'Mari Kobiashvili'];
-    var users = ['Usman Masood', 'Luly Alcaraz', 'Mari Kobiashvili', 'Paula Jacobs'];
+	Parse.initialize("qyuc8DGipEXPi3Fh32EKqnH2H563DPoFqcRjoa9h", "QTmatMd6trXNFaB0OaaPWEeCdCFpWm6YLv53dnn9");
+	var currentUser = Parse.User.current();
+	var friends = [];
+	var users = [];
+    var User = Parse.Object.extend("User");
+    var user_query = new Parse.Query(User);
+    user_query.notEqualTo("username", currentUser.get("username"));
+	user_query.find({
+		success: function(results){
+			//results has the lsit of all users
+			for(var u = 0; u < results.length; u++){
+				//console.log(results[u].get("username"));
+				users.push(results[u].get("username"));
+			}
+		}
+	});
+
+	if (currentUser) {
+		friends = currentUser.get("friends");
+		console.log(currentUser.get("friends"));
+		console.log(friends);
+	} else {
+		window.location = "login.html";
+	}
+
 	$(document).ready(function() {
 		displayFriends();
 	});
@@ -45,22 +69,27 @@
 		//console.log(friends);
 		if(friends.indexOf(delete_person) > -1){
 			friends.splice(friends.indexOf(delete_person), 1);
+			currentUser.remove("username", delete_person);
+			currentUser.save();
 		}
+		console.log(currentUser.get("friends"));
 		displayFriends();
 	}
     
 function addFriend(lost_friend){
 var new_buddy = lost_friend.replace('_add', '');
-if(users.indexOf(new_buddy) > -1){
-friends.push(new_buddy);
+if(users.indexOf(new_buddy) > -1 && friends.indexOf(new_buddy) === -1){
+	friends.push(new_buddy);
+	currentUser.add("username", lost_friend);
+	currentUser.save();
 }
+console.log(currentUser.get("friends"));
 displayFriends();
 }
 
 $(function() {
     var availableTags = users;
-    $("#friendSearchBox").autocomplete({source: availableTags});
-    
+    $("#friendSearchBox").autocomplete({source: availableTags});   
 });
 
 function searchFriends(lost_friend){
@@ -68,19 +97,25 @@ $("#displayFriendsTable").empty();
 var row1;
 var row2;
 var tableContent="";
-var url = lost_friend.replace(' ', '');
-url = url + 'Profile.html'
-if(friends.indexOf(lost_friend) > -1){
-displayFriends();
+//var url = lost_friend.replace(' ', '');
+var url = lost_friend + 'profile.html';
+
+//console.log(lost_friend);
+//console.log(users);
+//console.log(users.indexOf(lost_friend));
+if(users.indexOf(lost_friend) === -1 || friends.indexOf(lost_friend) > -1){
+	displayFriends();
 }
 else if(users.indexOf(lost_friend) > -1){
-row1 = "<tr><td>" +"</td><td><img src='"+lost_friend+".png'/></td><td class='friend_name'><a href='"+url+"'>" + lost_friend + "</a></td></tr>";
-row2 = "<tr class='arbuttons'><td></td><td></td><td></td><td align='right'><button id='"+lost_friend+"_add' onClick='addFriend(this.id)' align='right'>Add</button></td></tr>";
-tableContent+=row1+row2;
+	console.log('hello')
+	row1 = "<tr><td><img src= 'sprite-gold-star'/>" +"</td><td><a href='" + lost_friend+"profile.html'/><img src='"+lost_friend+".png' alt='"+lost_friend+"'/></a></td><td></td><td nowrap class='friend_name'><h2><a href='" + lost_friend+"profile.html'/>" + lost_friend + "</a></h2></td></tr>";
+	row2 = "<tr class='arbuttons'><td></td><td class='add'><center><button id='"+lost_friend+"'onClick='addFriend(this.id)'>Add</button></center></td></tr>";
+	tableContent+=row1+row2;
 }
 else{
 tableContent = "<tr><td></td><td colspan='5'>No user matching that name exists.</td></tr>";
 }
+//console.log(tableContent)
 document.getElementById('displayFriendsTable').innerHTML = tableContent;
 }
 
@@ -117,7 +152,7 @@ document.getElementById('displayFriendsTable').innerHTML = tableContent;
 				<td>
 				</td>
 				<td><input type="text" id="friendSearchBox" align="center" size="75" autofocus></td>
-				<td><button id="frndSrchBtn" onclick="searchFriends()"><span class="ui-icon ui-icon-search"></span></button></td>
+				<td><button id="frndSrchBtn" onclick="searchFriends(document.getElementById('friendSearchBox').value)"><span class="ui-icon ui-icon-search"></span></button></td>
 			</tr>
 		</table>
 		<table id="displayFriendsTable">
