@@ -14,15 +14,15 @@
     </style>
     
     <style>
-    .button {
+.button {
     display: inline-block;
     margin: 10px;
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
     border-radius: 8px;
-    -webkit-box-shadow:    0 8px 0 #c5376d, 0 15px 20px rgba(0, 0, 0, .35);
-    -moz-box-shadow: 0 8px 0 #c5376d, 0 15px 20px rgba(0, 0, 0, .35);
-    box-shadow: 0 8px 0 #c5376d, 0 15px 20px rgba(0, 0, 0, .35);
+    -webkit-box-shadow:    0 8px 0 #00376d, 0 15px 20px rgba(0, 0, 0, .35);
+    -moz-box-shadow: 0 8px 0 #00376d, 0 15px 20px rgba(0, 0, 0, .35);
+    box-shadow: 0 8px 0 #00376d, 0 15px 20px rgba(0, 0, 0, .35);
     -webkit-transition: -webkit-box-shadow .1s ease-in-out;
     -moz-transition: -moz-box-shadow .1s ease-in-out;
     -o-transition: -o-box-shadow .1s ease-in-out;
@@ -34,11 +34,11 @@
 .button span {
     display: inline-block;
     padding: 20px 30px;
-    background-color: #ec528d;
-    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(hsla(338, 90%, 80%, .8)), to(hsla(338, 90%, 70%, .2)));
-    background-image: -webkit-linear-gradient(hsla(338, 90%, 80%, .8), hsla(338, 90%, 70%, .2));
-    background-image: -moz-linear-gradient(hsla(338, 90%, 80%, .8), hsla(338, 90%, 70%, .2));
-    background-image: -o-linear-gradient(hsla(338, 90%, 80%, .8), hsla(338, 90%, 70%, .2));
+    background-color: #00528d;
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(hsla(220, 90%, 80%, .8)), to(hsla(220, 90%, 70%, .2)));
+    background-image: -webkit-linear-gradient(hsla(220, 90%, 80%, .8), hsla(220, 90%, 70%, .2));
+    background-image: -moz-linear-gradient(hsla(220, 90%, 80%, .8), hsla(220, 90%, 70%, .2));
+    background-image: -o-linear-gradient(hsla(220, 90%, 80%, .8), hsla(220, 90%, 70%, .2));
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
     border-radius: 8px;
@@ -47,7 +47,7 @@
     box-shadow: inset 0 -1px 1px rgba(255, 255, 255, .15);
     font-family: 'Pacifico', Arial, sans-serif;
     line-height: 1;
-    text-shadow: 0 -1px 1px rgba(175, 49, 95, .7);
+    text-shadow: 0 -1px 1px rgba(0, 49, 95, .7);
     -webkit-transition: background-color .2s ease-in-out, -webkit-transform .1s ease-in-out;
     -moz-transition: background-color .2s ease-in-out, -moz-transform .1s ease-in-out;
     -o-transition: background-color .2s ease-in-out, -o-transform .1s ease-in-out;
@@ -55,14 +55,14 @@
 }
 
 .button:hover span {
-    background-color: #ec6a9c;
-    text-shadow: 0 -1px 1px rgba(175, 49, 95, .9), 0 0 5px rgba(255, 255, 255, .8);
+    background-color: #006a9c;
+    text-shadow: 0 -1px 1px rgba(0, 49, 95, .9), 0 0 5px rgba(255, 255, 255, .8);
 }
 
 .button:active, .button:focus {
-    -webkit-box-shadow:    0 8px 0 #c5376d, 0 12px 10px rgba(0, 0, 0, .3);
-    -moz-box-shadow: 0 8px 0 #c5376d, 0 12px 10px rgba(0, 0, 0, .3);
-    box-shadow:    0 8px 0 #c5376d, 0 12px 10px rgba(0, 0, 0, .3);
+    -webkit-box-shadow:    0 8px 0 #00376d, 0 12px 10px rgba(0, 0, 0, .3);
+    -moz-box-shadow: 0 8px 0 #00376d, 0 12px 10px rgba(0, 0, 0, .3);
+    box-shadow:    0 8px 0 #00376d, 0 12px 10px rgba(0, 0, 0, .3);
 }
 
 .button:active span {
@@ -97,23 +97,19 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="brand" href="home.html">BookClub</a>
+          <a class="brand" href="#">BookClub</a>
 		  
            <div class="nav-collapse collapse">
             <ul class="nav">
-				<li><a href="profile.html">Profile</a></li>
-				<li><a href="friendsList.html">Friends</a></li>
-				<li><a href="booklist.html">My Library</a></li>
-				<li><a href="booksearch.html" >Find Books</a></li>
-				<li><a href="logout.html">Logout</a></li>
+				<li><a href="login.html" >Login</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
       </div>
     </div> 
     <div class="container">
-<a href="home.html" class="button"><span><div class="row"><img class="knopf" src="HomeNoBgd.png"></div> <div class="row" style="text-align:center;">Home</div></span></a> <a href="booklist.html" class="button"><span><div class="row"><img class="knopf" src="GlassNoBgd.png"></div><div class="row" style="text-align:center;">Find Books</div></span></a> <br>
-<a href="booklist.html" class="button"><span><div class="row"><img class="knopf" src="BookIconNoBgd.png"></div><div class="row" style="text-align:center;">My Reads</div></span></a> <a href="friendsList.html" class="button"><span><div class="row"><img class="knopf" src="SmileyNoBgd.png"></div><div class="row" style="text-align:center;">My Profile</div></span></a>
+<a href="home.html" class="button"><span><div class="row"><img class="knopf" src="HomeNoBgd.png"></div> <div class="row" style="text-align:center;">My Profile</div></span></a> <a href="booklist.html" class="button"><span><div class="row"><img class="knopf" src="GlassNoBgd.png"></div><div class="row" style="text-align:center;">Find Books</div></span></a> <br>
+<a href="booklist.html" class="button"><span><div class="row"><img class="knopf" src="BookIconNoBgd.png"></div><div class="row" style="text-align:center;">My Reads</div></span></a> <a href="friendsList.html" class="button"><span><div class="row"><img class="knopf" src="SmileyNoBgd.png"></div><div class="row" style="text-align:center;">Friends</div></span></a>
 </div>
 </body>
 </html>
