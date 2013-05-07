@@ -17,7 +17,8 @@ $(document).ready(function() {
 			var commentQuery = new Parse.Query(Comment);
 			commentQuery.get(object.get("comments")[i].id, {
 				success: function(comment){
-					$("#comments").prepend("<div class='comment'><b>"+comment.get("author")+":</b> "+comment.get("text")+"</div>");
+				console.log(comment);
+					$("#comments").prepend("<div class='comment'><b><a href='profile.html?username="+(comment.get("author"))+"'>"+comment.get("author")+"</a>:</b> "+comment.get("text")+"</div>");
 				},
 				error: function(object, error) {
 					alert("Error: "+error.message);
