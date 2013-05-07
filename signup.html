@@ -25,16 +25,16 @@ $(function() {
 		var user = new Parse.User();
 		user.set("username", $("#signup-username").val());
 		user.set("password", $("#signup-password").val());
-		var userbooks = new Array();
-		user.set("books", userbooks);
 		var userfriends = new Array();
 		user.set("friends", userfriends);
 		var userpic;
 		user.set("picture", userpic);
-		
+		user.set("goingToRead", []);
+		user.set("reading", []);
+		user.set("read", []);
 		user.signUp(null, {
 			success: function(user){
-				window.location = "profile.html";
+				window.location = "booklist.html";
 			},
 			error: function(user, error){
 				alert("Error: " + error.message);

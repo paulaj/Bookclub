@@ -14,7 +14,7 @@ $(function() {
 			var book = readingQuery.equalTo("title", user.get("reading")[i]);
 			book.first({
 				success: function(object){
-					$("#reading").append("<div id='"+object.get("url")+"'div><a href='"+object.get("url")+".html' class='listedBook'>"+object.get("title")+" by "+object.get("author")+"</a><button type='button' class='done' id="+object.get("url")+">Done Reading</button></br></div>");
+					$("#reading").append("<div id='"+object.get("url")+"div'><a href='"+object.get("url")+".html' class='listedBook'>"+object.get("title")+" by "+object.get("author")+"</a><button type='button' class='done' id="+object.get("url")+" onClick='markDone(this.id)'>Done Reading</button></br></div>");
 				},
 			});
 		}
@@ -27,7 +27,8 @@ $(function() {
 			var book = goingToReadQuery.equalTo("title", user.get("goingToRead")[i]);
 			book.first({
 				success: function(object){
-					$("#goingToRead").append("<div id='"+object.get("url")+"div'><a href='"+object.get("url")+".html' class='listedBook'>"+object.get("title")+" by "+object.get("author")+"</a><button type='button' class='currentlyReading' id="+object.get("url")+">Currently Reading</button></br></div>");
+					console.log(object.get('url'));
+					$("#goingToRead").append("<div id='"+object.get("url")+"div'><a href='"+object.get("url")+".html' class='listedBook'>"+object.get("title")+" by "+object.get("author")+"</a><button type='button' class='currentlyReading' id="+object.get('url')+" onClick='markReading(this.id)'>Currently Reading</button></br></div>");
 				},
 			});
 		}
@@ -43,29 +44,43 @@ $(function() {
 			});
 		}
 		} 
+
+	}
 	
-		$(document).ready($(".currentlyreading")).click(function(){
-			console.log("yo bucket");
-			console.log(this.activeElement);
-			console.log(this.activeElement.id);
+
+});
+
+
+		function markReading(id){
+			Parse.initialize("qyuc8DGipEXPi3Fh32EKqnH2H563DPoFqcRjoa9h", "QTmatMd6trXNFaB0OaaPWEeCdCFpWm6YLv53dnn9");
+			var user = Parse.User.current();
+			var Book = Parse.Object.extend("Book");
 			var goingToReadQuery = new Parse.Query(Book);
-			var book = goingToReadQuery.equalTo("url", this.activeElement.id);
+			var book = goingToReadQuery.equalTo("url", id);
 			book.first({
 				success: function(object){
+					$("#"+object.get("url")+"div").remove();
 					user.addUnique("reading", object.get("title"));
 					user.remove("goingToRead", object.get("title"));
 					console.log(user.get("goingToRead"));
 					user.save();
-					$("#reading").append("<div id='"+object.get("url")+"div'><a href='"+object.get("url")+".html' class='listedBook'>"+object.get("title")+" by "+object.get("author")+"</a><button type='button' class='done' id="+object.get("url")+">Done Reading</button></br></div>");
+					$("#reading").append("<div id='"+object.get("url")+"div'><a href='"+object.get("url")+".html' class='listedBook'>"+object.get("title")+" by "+object.get("author")+"</a><button type='button' class='done' id="+object.get("url")+" onClick='markDone(this.id)'>Done Reading</button></br></div>");
 				}
 			});
-		});
+		}
 		
-		$(document).ready($(".done")).click(function(){
+		function markDone(id){
+			Parse.initialize("qyuc8DGipEXPi3Fh32EKqnH2H563DPoFqcRjoa9h", "QTmatMd6trXNFaB0OaaPWEeCdCFpWm6YLv53dnn9");
+			var user = Parse.User.current();
+			var Book = Parse.Object.extend("Book");
+			console.log("logs yo");
+			console.log(id);
 			var readingQuery = new Parse.Query(Book);
-			var book = goingToReadQuery.equalTo("url", this.activeElement.id);
+			var book = readingQuery.equalTo("url", id);
 			book.first({
 				success: function(object){
+					console.log(object.get("url"));
+					$("#"+object.get("url")+"div").remove();
 					user.addUnique("read", object.get("title"));
 					user.remove("reading", object.get("title"));
 					console.log(user.get("reading"));
@@ -73,9 +88,4 @@ $(function() {
 					$("#alreadyRead").append("<div id='"+object.get("url")+"div'><a href='"+object.get("url")+".html' class='listedBook'>"+object.get("title")+" by "+object.get("author")+"</br></div>");
 				}
 			});
-		});
-	
-	}
-	
-
-});
+		}
