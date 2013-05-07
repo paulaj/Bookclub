@@ -26,7 +26,7 @@ $(function(){
 			success: function(person){
 				if (person != undefined){
 					$(".username").html(username);
-					var source = username+".png";
+					var source = person.get("userpic");
 					$("#profilePic").attr("src",source);
 					var Book = Parse.Object.extend("Book");
 					if (person.get("reading")){
@@ -44,7 +44,7 @@ $(function(){
 					$("#reading").append("nothing at the moment");
 					}
 					if (person.get("liked")){
-						for (var i = Math.max(0, person.get("liked").length-3); i < person.get("liked").length; i++){
+						for (var i = Math.max(0, person.get("liked").length-4); i < person.get("liked").length; i++){
 							var likedQuery = new Parse.Query(Book);
 							console.log(person.get("liked")[i]);
 							var book = readingQuery.equalTo("title", person.get("liked")[i]);
@@ -55,7 +55,7 @@ $(function(){
 							});
 						}
 					} else {
-					$("#liked").append("");
+					$("#liked").append("nothing so far");
 					}
 					if (Parse.User.current() != null){
 						var user = Parse.User.current();

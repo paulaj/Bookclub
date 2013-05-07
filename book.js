@@ -44,7 +44,8 @@ $(document).ready(function() {
 	});
 	
 	// How to make this work without displaying confirmation???
-	$(window).bind('beforeunload', function(e){
+//	$(window).bind('beforeunload', function(e){
+	$(function(){
 		if ($("#rating").val() != ""){
 			var totalRating = object.get("avgRating")*object.get("numRatings");
 			object.set("numRatings", object.get("numRatings") + 1);
