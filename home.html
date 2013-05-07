@@ -6,15 +6,28 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+    <script src="http://www.parsecdn.com/js/parse-1.2.7.min.js"></script>
+   	<script type="text/javascript" src="external_js/jquery-1.9.0.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
     <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
     <style>
       body {
         padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
       }
     </style>
+    <script type="text/javascript">
+      Parse.initialize("qyuc8DGipEXPi3Fh32EKqnH2H563DPoFqcRjoa9h", "QTmatMd6trXNFaB0OaaPWEeCdCFpWm6YLv53dnn9");
+      $(document).ready(function(){
+        var currentUser = Parse.User.current().get("username");
+        currUserDiv = document.getElementById("currUser");
+        alert(currentUser);
+        $("#currUser").html(currentUser);
+      alert('e');
+      });
+    </script>
     
     <style>
-.button {
+.buttonz {
     display: inline-block;
     margin: 10px;
     -webkit-border-radius: 8px;
@@ -31,7 +44,7 @@
     color: #fff;
 }
 
-.button span {
+.buttonz span {
     display: inline-block;
     padding: 20px 30px;
     background-color: #00528d;
@@ -54,18 +67,18 @@
     transition: background-color .2s ease-in-out, transform .1s ease-in-out;
 }
 
-.button:hover span {
+.buttonz:hover span {
     background-color: #006a9c;
     text-shadow: 0 -1px 1px rgba(0, 49, 95, .9), 0 0 5px rgba(255, 255, 255, .8);
 }
 
-.button:active, .button:focus {
+.buttonz:active, .button:focus {
     -webkit-box-shadow:    0 8px 0 #00376d, 0 12px 10px rgba(0, 0, 0, .3);
     -moz-box-shadow: 0 8px 0 #00376d, 0 12px 10px rgba(0, 0, 0, .3);
     box-shadow:    0 8px 0 #00376d, 0 12px 10px rgba(0, 0, 0, .3);
 }
 
-.button:active span {
+.buttonz:active span {
     -webkit-transform: translate(0, 4px);
     -moz-transform: translate(0, 4px);
     -o-transform: translate(0, 4px);
@@ -87,7 +100,7 @@
 	<style type="text/css">
 		p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
 	</style>
-</head>
+  </head>
   <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
@@ -111,10 +124,11 @@
       </div>
     </div>
     <center>
+    <h2>Welcome back, <div id="currUser" style="display:inline;"></div><h2>
     <div class="container">
-      <a href="profile.html" class="button"><span><img class="knopf" src="HomeNoBgd3.png"></span></a><a href="booklist.html" class="button"><span><img class="knopf" src="GlassNoBgd3.png"></span></a><br>
+      <a href="profile.html" class="buttonz"><span><img class="knopf" src="HomeNoBgd3.png"></span></a><a href="booklist.html" class="buttonz"><span><img class="knopf" src="GlassNoBgd3.png"></span></a><br>
       
-      <a href="booklist.html" class="button"><span><img class="knopf" src="BookIconNoBgd3.png"></span></a> <a href="friendsList.html" class="button"><span><img class="knopf" src="SmileyNoBgd3.png"></span></a>
+      <a href="booklist.html" class="buttonz"><span><img class="knopf" src="BookIconNoBgd3.png"></span></a> <a href="friendsList.html" class="buttonz"><span><img class="knopf" src="SmileyNoBgd3.png"></span></a>
 </div>
 </center>
 </body>
