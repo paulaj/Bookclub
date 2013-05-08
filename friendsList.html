@@ -13,6 +13,18 @@
       body {
         padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
       }
+	   .options li{
+		width:200px;
+		float: left;
+		display:inline;
+	  }
+	  button.list, button:active {
+		background:none;
+		border:none; 
+		padding:0;
+		color:blue; 
+		border-bottom:1px solid #444; 
+	}
     </style>
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	
@@ -154,7 +166,7 @@ document.getElementById('displayFriendsTable').innerHTML = tableContent;
     </div>
 
     <div class="container">
-	
+		
 
 		<table id="searchTable">
 			<tr class="friend_search">
