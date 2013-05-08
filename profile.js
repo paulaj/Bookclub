@@ -125,11 +125,37 @@ function recommend(){
 	alert("Recommended.");
 };
 
+var picIds = {"s0":"no", "s1":"no", "s2":"no", "s3":"no", "s4":"no", "s5":"no"};
+
+function activatePic(pic){
+  var ids = ["s0","s1","s2","s3","s4","s5"];
+  for (var p=0;p<6;p++){
+    if (picIds[ids[p]] == "yes"){picIds[ids[p]]="no";}
+  }
+  picIds[pic]="yes";
+  for (var p=0;p<6;p++){
+    if (picIds[ids[p]] == "yes"){$("#s"+p).attr("style", "opacity:.5;");}
+    else{$("#s"+p).attr("style", "opacity:1;");}
+  }
+};
+
+function updatePicZ(){
+var ids = ["s0","s1","s2","s3","s4","s5"];
+    for (var p=0;p<6;p++){
+        if (picIds[ids[p]] == "yes"){updatePic(ids[p]);}
+    }
+}
+
 function updatePic(newUrl){
-  Parse.User.current().set("userpic", newUrl);
+  var translator = {"s0":"stockphotos/stock1.png", "s1":"stockphotos/stock2.png", "s2":"stockphotos/stock3.png", "s3":"stockphotos/stock4.png", "s4":"stockphotos/stock5.png", "s5":"stockphotos/stock6.png"};
+  Parse.User.current().set("userpic", translator[newUrl]);
   Parse.User.current().save();
-  alert(Parse.User.current().get("userpic"));
-  $("#newPicToggle").attr("style", "inline");
+  renewpic(translator[newUrl]);
+};
+
+function renewpic(loc){
+  $("#profilePic").attr("src",loc);
+  $("#newPicToggle").attr("style", "display:table;");
 };
 
 $(document).ready(function(){
@@ -141,7 +167,5 @@ $(document).ready(function(){
     $("#newPicToggle").attr("style", "display:none;");
   }
   currUserDiv = document.getElementById("currUser");
-  //$("#currUser").html(currentUser);
   $("#profileLink").attr('href', 'profile.html?username='+logInUser);
-  //$("#username").html(currentUser);
 });
