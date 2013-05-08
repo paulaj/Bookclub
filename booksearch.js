@@ -21,7 +21,8 @@ $(document).ready(function() {
 			for (var i = 0; i < books.length; i++){
 				titles.push(books[i].get("title"));}
 			console.log(titles);	
-			$("#BookRecommendBox").autocomplete({source: titles});  
+			$("#BookRecommendBox").autocomplete({source: titles});
+            $("#profileLink").attr("href",'profile.html?username='+Parse.User.current().get("username"));  
 			
 }});
 });

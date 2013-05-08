@@ -64,6 +64,7 @@
 	}
 
 	$(document).ready(function() {
+        $("#profileLink").attr("href",'profile.html?username='+Parse.User.current().get("username"));
 		if (friends != undefined && friends != []){
 			console.log(friends);
 			displayFriends();
@@ -163,7 +164,7 @@ document.getElementById('displayFriendsTable').innerHTML = tableContent;
           <a class="brand" href="home.html">BookClub</a>
           <div class="nav-collapse collapse">
             <ul class="nav">			
-				<li><a href="profile.html">Profile</a></li>
+				<li><a id="profileLink" href="profile.html">Profile</a></li>
 				<li class="active"><a href="friendsList.html">Friends</a></li>
 				<li><a href="booklist.html">My Library</a></li>
 				<li><a href="booksearch.html" >Find Books</a></li>
