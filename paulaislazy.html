@@ -1,0 +1,85 @@
+<head>
+<script type="text/javascript" src="external_js/jquery-1.9.0.min.js"></script>
+<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+<script type="text/javascript" src="http://static.titovanton.com/static/titovanton/libs/flexible-stars/jquery.flexible.stars.js"></script>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />   
+<link rel="stylesheet" href="mystyle.css">
+<script src="http://www.parsecdn.com/js/parse-1.2.7.min.js"></script>
+   <style type="text/css" media="screen">
+            i {display: inline-block}
+            [class^="sprite-"] {
+                background: url(http://static.titovanton.com/static/titovanton//pic/csg-513e9341220f7.png) no-repeat top left;
+            }
+
+            .sprite-gold-star{ background-position: 0 0; width: 29px; height: 28px; } 
+            .sprite-half-star{ background-position: 0 -78px; width: 29px; height: 28px; } 
+            .sprite-silver-star{ background-position: 0 -156px; width: 29px; height: 28px; } 
+        </style>
+		
+<script src="book.js"></script>
+</head>
+
+<body>
+
+<div id="chooseFriends" title="Recommend To:">
+	<form>
+	<fieldset>
+	<input type="checkbox" id="jason">Jason James</input></br>
+	<input type="checkbox" id="allison">Allison Abernathy</br>
+	<input type="checkbox" id="librarian">Librarian Lady</br>
+	</fieldset>
+	</form>
+</div>
+
+    <ul>
+
+    <li><a href="friendsList.html" class="navBar">Friends</a></li>
+    <li><a href="booklist.html" class="navBar">My Library</a></li>
+    <li><a href="booksearch.html" class="navBar">Find Books</a></li>
+    <li><a href="home.html" id="logout" class="navBar"></a></li>
+
+    </ul>
+
+    <div class="border"></div>
+    <div class="content">  
+	
+<table>
+<div class="border"></div>
+<div class="content">
+        <tr>
+		<td></td>
+<td><h1><div id="title">Paula is Lazy</div></h1></td></tr>
+<tr>
+<td></td>
+<td><h2><div id="genre"/></h2></td></tr>
+<tr>
+<td></td>
+<td><h2>Synopsis:</h2><div id="synopsis"/></td></tr>
+<tr>
+<td></td>
+<td><h2>Rating:<div id="rate" class="rateBook"></div></h2><div id="avgRatingInfo"></div></td></tr>
+<tr>
+<td></td>
+<input type="hidden" id="rating">
+<td>
+
+<input type="submit" id="addToShelf" value="Add To Reading List">
+<button type="button" id="recommend">Recommend</button></td></tr>
+
+<tr>
+<td></td>
+<td><div id="commentform"><h2>Comments:</h2>
+<textarea type="text" style="height: 75px; width: 400px;" id="commentForm"></textarea>
+<button type="button" id="addComment">Add Comment</button></div></td></tr>
+
+<tr>
+<td></td>
+<td>
+<div id="comments">
+
+</div>
+</td></tr>
+
+</table>
+</div>
+</body>
