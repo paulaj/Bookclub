@@ -1,17 +1,24 @@
-<!DOCTYPE html>
-  <head lang="en">
-    <meta charset="utf-8">
+<head>
+<meta charset="utf-8">
+    <title>Bookclub</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <script type="text/javascript" src="external_js/jquery-1.9.0.min.js"></script>
-    <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
-    <script type="text/javascript" src="http://static.titovanton.com/static/titovanton/libs/flexible-stars/jquery.flexible.stars.js"></script>
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />   
+
+    <!-- Le styles -->
     <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
-    <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
-    <script src="http://www.parsecdn.com/js/parse-1.2.7.min.js"></script>
-    <style type="text/css" media="screen">
+    <style>
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+    </style>
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script type="text/javascript" src="external_js/jquery-1.9.0.min.js"></script>
+<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+<script type="text/javascript" src="http://static.titovanton.com/static/titovanton/libs/flexible-stars/jquery.flexible.stars.js"></script>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />   
+<script src="http://www.parsecdn.com/js/parse-1.2.7.min.js"></script>
+   <style type="text/css" media="screen">
             i {display: inline-block}
             [class^="sprite-"] {
                 background: url(http://static.titovanton.com/static/titovanton//pic/csg-513e9341220f7.png) no-repeat top left;
@@ -20,16 +27,13 @@
             .sprite-gold-star{ background-position: 0 0; width: 29px; height: 28px; } 
             .sprite-half-star{ background-position: 0 -78px; width: 29px; height: 28px; } 
             .sprite-silver-star{ background-position: 0 -156px; width: 29px; height: 28px; } 
-    </style>
-    <style>
-      body {
-        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
-      }
-    </style>
-    <script src="book.js"></script>
-  </head>
+        </style>
+		
+<script src="book.js"></script>
+</head>
 
 <body>
+
 
 <div id="chooseFriends" title="Recommend To:">
 	<form>
@@ -40,8 +44,7 @@
 	</fieldset>
 	</form>
 </div>
-
-    <div class="navbar navbar-inverse navbar-fixed-top">
+<div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
           <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -58,14 +61,15 @@
             <li><a href="booksearch.html" >Find Books</a></li>
             <li><a href="logout.html">Logout</a></li>
             </ul>
-          </div>
+          </div><!--/.nav-collapse -->
         </div>
       </div>
-    </div>    <div class="content">  
+    </div>
+
+    <div class="container"> 
 	
 <table>
-<div class="border"></div>
-<div class="content">
+
         <tr>
 		<td></td>
 <td><h1><div id="title">Twilight</div></h1></td></tr>
@@ -77,13 +81,14 @@
 <td><h3>Synopsis:</h3><div id="synopsis"/></td></tr>
 <tr>
 <td></td>
-<td><h3>Rating:<div id="rate" class="rateBook"></div></h3><div id="avgRatingInfo"></div></td></tr>
+<td><h2>Rating:<div id="rate" class="rateBook"></div></h2><div id="avgRatingInfo"></div></td></tr>
 <tr>
 <td></td>
 <input type="hidden" id="rating">
 <td>
-<input type="submit" id="addToShelf" value="Add To Reading List">
-
+<form action="booklist.html">
+    <input type="submit" id="addToShelf" value="Add To Reading List">
+</form>
 <button type="button" id="recommend">Recommend</button></td></tr>
 
 <tr>
