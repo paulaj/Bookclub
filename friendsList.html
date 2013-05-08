@@ -14,6 +14,10 @@
         padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
       }
 	  
+      .friendpix {
+        weight:200px;
+        height:200px;
+      }
 	
 	}
     </style>
@@ -59,8 +63,48 @@
 		if (friends != undefined && friends != []){
 			console.log(friends);
 			displayFriends();
+            
+            for(var i = 0; i < friends.length; i++){
+                var query = new Parse.Query(Parse.User)
+                var username = friends[i];
+                query.equalTo('username', username);
+                query.first({
+                  success: function(person){
+                    if (person != undefined){
+                      var pic = person.get("userpic");
+                      var idstr = '#'+person.get('username');
+                      $(idstr.replace(' ', '')).attr('src', pic);
+                    }
+                  }
+                });
+            }
 		}
 	});
+    
+    function ref(listPeople){
+        $("#profileLink").attr("href",'profile.html?username='+Parse.User.current().get("username"));
+		if (listPeople != undefined && listPeople != []){
+			console.log(friends);
+			//displayFriends();
+            
+            for(var i = 0; i < listPeople.length; i++){
+                var query = new Parse.Query(Parse.User)
+                var username = listPeople[i];
+                query.equalTo('username', username);
+                query.first({
+                  success: function(person){
+                    if (person != undefined){
+                      var pic = person.get("userpic");
+                      var idstr = '#'+person.get('username');
+                      $(idstr.replace(' ', '')).attr('src', pic);
+                    }
+                  }
+                });
+            }
+		}
+    
+    
+    }
  
 	function displayFriends(){
 		$("#displayFriendsTable").empty();
@@ -68,12 +112,12 @@
 		var row2;
 		var tableContent="";
 		for(var i = 0; i < friends.length; i++){
-			row1 = "<tr><td><img src= 'sprite-gold-star'/>" +"</td><td><a href='profile.html?username="+friends[i]+"'/><img src='"+friends[i]+".png' alt='"+friends[i]+"'/></a></td><td></td><td nowrap class='friend_name'><h3><a href='profile.html?username="+friends[i]+"'/>" + friends[i] + "</a></h3></td></tr>";
-			row2 = "<tr class='arbuttons'><td></td><td class='rem'><center><button id='"+friends[i]+"'onClick='removeFriend(this.id)'>Remove</button></center></td></tr>";
+			row1 = "<tr><td><img src= 'sprite-gold-star'/>" +"</td><td><a href='profile.html?username="+friends[i]+"'/><img id='"+friends[i].replace(' ','')+"' alt='"+friends[i]+"' class='friendpix'/></a></td><td></td><td nowrap class='friend_name'><h3><a href='profile.html?username="+friends[i]+"'/>" + friends[i] + "</a></h3></td></tr>";
+			row2 = "<tr class='arbuttons'><td></td><td class='rem'><center><button id='"+friends[i]+"'onClick='removeFriend(this.id)'>Remove</button></center></td></tr><tr><td height='10px'> </td></tr>";
 			tableContent+=row1+row2;
 		}
 		document.getElementById('displayFriendsTable').innerHTML = tableContent;
-		document.getElementById('searchType').innerHTML="<h3>My Friends</h3></br>";
+        ref(friends);
 	}
 
 	function removeFriend(delete_person){
@@ -122,22 +166,22 @@
 		var row1;
 		var row2;
 		var tableContent="";
-		//var url = lost_friend.replace(' ', '');
-		var url = lost_friend + 'profile.html';
+		var url = lost_friend.replace(' ', '');
+		//var url ='profile.html?username='+lost_friend;
 
 		console.log(lost_friend);
 		console.log(users);
 		//console.log(users.indexOf(lost_friend));
 		if( friends.indexOf(lost_friend) > -1){
-			row1 = "<tr><td><img src= 'sprite-gold-star'/>" +"</td><td><a href='profile.html?username="+lost_friend+"'/><img src='"+lost_friend+".png' alt='"+lost_friend+"'/></a></td><td></td><td nowrap class='friend_name'><h3><a href='profile.html?username="+lost_friend+"'/>" + lost_friend + "</a></h3></td></tr>";
-			row2 = "<tr class='arbuttons'><td></td><td class='rem'><center><button id='"+lost_friend+"'onClick='removeFriend(this.id)'>Remove</button></center></td></tr>";
+			row1 = "<tr><td><img src= 'sprite-gold-star'/>" +"</td><td><a href='profile.html?username="+lost_friend+"'/><img id='"+lost_friend.replace(' ','')+"' alt='"+lost_friend+"' class='friendpix'/></a></td><td></td><td nowrap class='friend_name'><h3><a href='profile.html?username="+lost_friend+"'/>" + lost_friend + "</a></h3></td></tr>";
+			row2 = "<tr class='arbuttons'><td></td><td class='rem'><center><button id='"+lost_friend+"'onClick='removeFriend(this.id)'>Remove</button></center></td></tr><tr><td height='10px'> </td></tr>";
 			tableContent+=row1+row2;
 		}
 		else if(users.indexOf(lost_friend) > -1){
 			i = users.indexOf(lost_friend);
 			console.log('hello')
-			row1 = "<tr><td><img src= 'sprite-gold-star'/>" +"</td><td><a href='profile.html?username="+lost_friend+"'/><img src='"+lost_friend+".png' alt='"+lost_friend+"'/></a></td><td></td><td nowrap class='friend_name'><h3><a href='profile.html?username="+lost_friend+"'/>" + lost_friend + "</a></h3></td></tr>";
-			row2 = "<tr class='arbuttons'><td></td><td class='add'><center><button id='"+lost_friend+"'onClick='addFriend(this.id)'>Add</button></center></td></tr>";
+			row1 = "<tr><td><img src= 'sprite-gold-star'/>" +"</td><td><a href='profile.html?username="+lost_friend+"'/><img id='"+lost_friend.replace(' ','')+"' alt='"+lost_friend+"' class='friendpix'/></a></td><td></td><td nowrap class='friend_name'><h3><a href='profile.html?username="+friends[i]+"'/>" + lost_friend + "</a></h3></td></tr>";
+            row2 = "<tr class='arbuttons'><td></td><td class='add'><center><button id='"+lost_friend+"'onClick='addFriend(this.id)'>Add</button></center></td></tr>";
 			tableContent+=row1+row2;
 		}
 		else{
@@ -146,6 +190,7 @@
 		//console.log(tableContent)
 		document.getElementById('displayFriendsTable').innerHTML = tableContent;
 		document.getElementById('searchType').innerHTML="<h3>Search Results</h3></br>";
+        ref([lost_friend]);
 		}
 	
 	
@@ -156,19 +201,19 @@
 		var tableContent="";
 		for(var i = 0; i < users.length; i++){
 			if( friends.indexOf(users[i]) > -1){
-				row1 = "<tr><td><img src= 'sprite-gold-star'/>" +"</td><td><a href='profile.html?username="+users[i]+"'/><img src='"+users[i]+".png' alt='"+users[i]+"'/></a></td><td></td><td nowrap class='friend_name'><h3><a href='profile.html?username="+users[i]+"'/>" + users[i] + "</a></h3></td></tr>";
-				row2 = "<tr class='arbuttons'><td></td><td class='rem'><center><button id='"+users[i]+"'onClick='removeFriend(this.id)'>Remove</button></center></td></tr>";
+				row1 = "<tr><td><img src= 'sprite-gold-star'/>" +"</td><td><a href='profile.html?username="+users[i]+"'/><img id='"+users[i].replace(' ','')+"' alt='"+users[i]+"' class='friendpix'/></a></td><td></td><td nowrap class='friend_name'><h3><a href='profile.html?username="+users[i]+"'/>" + users[i] + "</a></h3></td></tr>";
+				row2 = "<tr class='arbuttons'><td></td><td class='rem'><center><button id='"+users[i]+"'onClick='removeFriend(this.id)'>Remove</button></center></td></tr><tr><td height='10px'> </td></tr>";
 				tableContent+=row1+row2;
 			}
 			else if(friends.indexOf(users[i]) === -1 && users.indexOf(users[i]) > -1){
-				console.log('hello')
-				row1 = "<tr><td><img src= 'sprite-gold-star'/>" +"</td><td><a href='profile.html?username="+users[i]+"'/><img src='"+users[i]+".png' alt='"+users[i]+"'/></a></td><td></td><td nowrap class='friend_name'><h3><a href='profile.html?username="+users[i]+"'/>" + users[i]+ "</a></h3></td></tr>";
-				row2 = "<tr class='arbuttons'><td></td><td class='add'><center><button id='"+users[i]+"'onClick='addFriend(this.id)'>Add</button></center></td></tr>";
+				row1 = "<tr><td><img src= 'sprite-gold-star'/>" +"</td><td><a href='profile.html?username="+users[i]+"'/><img id='"+users[i].replace(' ','')+"' alt='"+users[i]+"' class='friendpix'/></a></td><td></td><td nowrap class='friend_name'><h3><a href='profile.html?username="+users[i]+"'/>" + users[i] + "</a></h3></td></tr>";
+				row2 = "<tr class='arbuttons'><td></td><td class='add'><center><button id='"+users[i]+"'onClick='addFriend(this.id)'>Add</button></center></td></tr><tr><td height='10px'> </td></tr>";
 				tableContent+=row1+row2;
 			}
 		}
 		document.getElementById('displayFriendsTable').innerHTML = tableContent;
 		document.getElementById('searchType').innerHTML="<h3>All Users</h3></br>";
+        ref(users);
 	}
 
 	</script>	
