@@ -222,5 +222,6 @@ $(document).ready(function(){
     $("#newPicToggle").attr("style", "display:none;");
   }
   currUserDiv = document.getElementById("currUser");
+  $("#usernamefield").html(currentUser);
   $("#profileLink").attr('href', 'profile.html?username='+logInUser);
 });
