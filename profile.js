@@ -105,15 +105,10 @@ function recommend(){
 };
 
 function updatePic(newUrl){
-  var query = new Parse.Query(Parse.User);
-  username = username.replace("%20"," ");
-  query.first({
-    success: function(person){
-      var rec = new Recommendation();
-      rec.set("userpic", newUrl);
-      rec.save();
-    },
-  });
+  Parse.User.current().set("userpic", newUrl);
+  Parse.User.current().save();
+  alert(Parse.User.current().get("userpic"));
+  $("#newPicToggle").attr("style", "inline");
 };
 
 $(document).ready(function(){
