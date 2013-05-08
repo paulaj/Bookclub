@@ -135,6 +135,7 @@ if(users.indexOf(lost_friend) === -1 || friends.indexOf(lost_friend) > -1){
 	displayFriends();
 }
 else if(users.indexOf(lost_friend) > -1){
+	i = users.indexOf(lost_friend);
 	console.log('hello')
 	row1 = "<tr><td><img src= 'sprite-gold-star'/>" +"</td><td><a href='profile.html?username="+friends[i]+"'/><img src='"+lost_friend+".png' alt='"+lost_friend+"'/></a></td><td></td><td nowrap class='friend_name'><h2><a href='profile.html?username="+friends[i]+"'/>" + lost_friend + "</a></h2></td></tr>";
 	row2 = "<tr class='arbuttons'><td></td><td class='add'><center><button id='"+lost_friend+"'onClick='addFriend(this.id)'>Add</button></center></td></tr>";
