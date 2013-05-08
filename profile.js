@@ -45,28 +45,7 @@ $(document).ready(function(){
 					$("#reading").append("nothing at the moment");
 					}
 					
-					
-					// Liked Books
-					
-					if (person.get("liked")){
-						for (var i = 0; i < person.get("liked").length; i++){
-							var readingQuery = new Parse.Query(Book);
-							var book = readingQuery.equalTo("title", person.get("liked")[i]);
-							book.first({
-								success: function(object){
-									$("#likes").append("<div id='"+object.get("url")+"div'><a href='"+object.get("url")+".html' class='listedBook'>"+object.get("title")+" by "+object.get("author")+"</div>");
-								},
-							});
-						}
-					} else {
-					$("#likes").append("nothing at the moment");
-					}
-					
-					
-					
-					
-					
-					
+					// Put in liked books here after Hannahdorf does ratings
 					
 					if (Parse.User.current() != null){
 						var user = Parse.User.current();
@@ -149,13 +128,22 @@ var ids = ["s0","s1","s2","s3","s4","s5"];
 function updatePic(newUrl){
   var translator = {"s0":"stockphotos/stock1.png", "s1":"stockphotos/stock2.png", "s2":"stockphotos/stock3.png", "s3":"stockphotos/stock4.png", "s4":"stockphotos/stock5.png", "s5":"stockphotos/stock6.png"};
   Parse.User.current().set("userpic", translator[newUrl]);
+  Parse.User.current().set("password", Parse.User.current().get("password"));
+  Parse.User.current().set("authData", Parse.User.current().get("authData"));
+  Parse.User.current().set("emailVerified", Parse.User.current().get("emailVerified"));
+  Parse.User.current().set("books", Parse.User.current().get("books"));
+  Parse.User.current().set("email", Parse.User.current().get("email"));
+  Parse.User.current().set("friends", Parse.User.current().get("friends"));
+  Parse.User.current().set("goingToRead", Parse.User.current().get("goingToRead"));
+  Parse.User.current().set("liked", Parse.User.current().get("liked"));
+  Parse.User.current().set("read", Parse.User.current().get("read"));
+  Parse.User.current().set("reading", Parse.User.current().get("reading"));
   Parse.User.current().save();
   renewpic(translator[newUrl]);
 };
 
 function renewpic(loc){
   $("#profilePic").attr("src",loc);
-  $("#newPicToggle").attr("style", "display:table;");
 };
 
 $(document).ready(function(){
