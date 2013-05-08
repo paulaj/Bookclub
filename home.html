@@ -21,6 +21,7 @@
         var currentUser = Parse.User.current().get("username");
         currUserDiv = document.getElementById("currUser");
         $("#currUser").html(currentUser);
+        $("#profButt").attr('href', 'profile.html?username='+currentUser)
       });
     </script>
     
@@ -124,7 +125,7 @@
     <center>
     <h2>Welcome back, <div id="currUser" style="display:inline;"></div><h2>
     <div class="container">
-      <a href="profile.html" class="buttonz"><span><img class="knopf" src="HomeNoBgd3.png"></span></a><a href="booklist.html" class="buttonz"><span><img class="knopf" src="GlassNoBgd3.png"></span></a><br>
+      <a href="profile.html" class="buttonz" id="profButt"><span><img class="knopf" src="HomeNoBgd3.png"></span></a><a href="booklist.html" class="buttonz"><span><img class="knopf" src="GlassNoBgd3.png"></span></a><br>
       
       <a href="booklist.html" class="buttonz"><span><img class="knopf" src="BookIconNoBgd3.png"></span></a><a href="friendsList.html" class="buttonz"><span><img class="knopf" src="SmileyNoBgd3.png"></span></a>
 </div>

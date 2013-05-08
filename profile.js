@@ -29,6 +29,10 @@ $(function(){
 					$(".username").html(username);
 					var source = person.get("userpic");
 					$("#profilePic").attr("src",source);
+                    if (username == Parse.User.current().get("username")){
+                        $("#newPictureSelect").attr("style", "display:visible;")
+                        
+                    }
 					var Book = Parse.Object.extend("Book");
 					if (person.get("reading")){
 						for (var i = 0; i < person.get("reading").length; i++){
@@ -102,5 +106,13 @@ function recommend(){
 	});
 	}
 	alert("Recommended.");
+};
+
+function showdiv(divname){  
+    alert('a');
+    var divthing = $("#"+divname);
+    alert('a');
+    divthing.attr("style","display:block);"
+    alert('a');
 };
 

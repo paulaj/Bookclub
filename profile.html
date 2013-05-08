@@ -24,13 +24,43 @@
       .username {
         display:inline;
       }
+      
+      #picSelect {
+        display:hidden;
+        color:#0088cc;
+        font-weight:bold;
+      }
+      
+      #picMenu{
+        overflow-x:hidden;
+        height:500px;
+        width:200px;
+      }
+      
+      #stockPic{
+        width:200px;
+        height:200px;
+      }
+      
     </style>
     <script type="text/javascript" src="external_js/jquery-1.9.0.min.js"></script>
     <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+    <script src="bootstrap/js/bootstrap.js"></script>
     <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
 	<script src="http://www.parsecdn.com/js/parse-1.2.7.min.js"></script>
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" /> 
 	<script src="profile.js"></script>
+    <script type="text/javascript">
+
+    function toggle_visibility(id) {
+       var e = document.getElementById(id);
+       if(e.style.display == 'block')
+          e.style.display = 'none';
+       else
+          e.style.display = 'block';
+    };
+
+    </script>
   </head>
 
   <body>
@@ -61,6 +91,40 @@
         <div class="row-fluid">
           <div class="span3">
             <img id="profilePic">
+            <a href="#myModal" role="button" class="btn" data-toggle="modal">Select New Picture!</a>
+            <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="myModalLabel">Select New Picture</h3>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="span1"></div><div class="span3"><img src="stockphotos/stock1.png"></div>
+                <div class="span1"></div><div class="span3"><img src="stockphotos/stock2.png"></div>
+                <div class="span1"></div><div class="span3"><img src="stockphotos/stock3.png"></div>
+              </div>
+              <br/>
+              <div class="row">
+              </div>
+              <div class="row">
+                <div class="span1"></div><div class="span3"><img src="stockphotos/stock4.png"></div>
+                <div class="span1"></div><div class="span3"><img src="stockphotos/stock5.png"></div>
+                <div class="span1"></div><div class="span3"><img src="stockphotos/stock6.png"></div>
+              </div>
+            </div>
+            <div class="modal-footer">
+            <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+            <button class="btn btn-primary">Save changes</button>
+            </div>
+            </div>
+            <!--<span id="picSelect" onclick="toggle_visibility('picMenu');"> Select a new picture! </span>-->
+            <!--<div id="picMenu" class="row" style="display:none;">-->
+              <!--<img src="stockphotos/stock1.png">-->
+              <!--<img src="stockphotos/stock2.png">-->
+              <!--<img src="stockphotos/stock3.png">-->
+              <!--<img src="stockphotos/stock4.png">-->
+              <!--<img src="stockphotos/stock5.png">-->
+            <!--</div>-->
           </div>
           <div class="span7">
             <h3><div class="username"></div></h3><br>
