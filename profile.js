@@ -45,7 +45,28 @@ $(document).ready(function(){
 					$("#reading").append("nothing at the moment");
 					}
 					
-					// Put in liked books here after Hannahdorf does ratings
+					
+					// Liked Books
+					
+					if (person.get("liked")){
+						for (var i = 0; i < person.get("liked").length; i++){
+							var readingQuery = new Parse.Query(Book);
+							var book = readingQuery.equalTo("title", person.get("liked")[i]);
+							book.first({
+								success: function(object){
+									$("#likes").append("<div id='"+object.get("url")+"div'><a href='"+object.get("url")+".html' class='listedBook'>"+object.get("title")+" by "+object.get("author")+"</div>");
+								},
+							});
+						}
+					} else {
+					$("#likes").append("nothing at the moment");
+					}
+					
+					
+					
+					
+					
+					
 					
 					if (Parse.User.current() != null){
 						var user = Parse.User.current();
