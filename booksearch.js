@@ -14,7 +14,7 @@ $(document).ready(function() {
 				books=results;
 				var book = books[i];
 				
-				$("#new").append("<div id='"+book.get("url")+"div'><a href='"+book.get("url")+".html'>"+book.get("title")+" by "+book.get("author")+"</a></br></div>");	
+				$("#new").append("<p><a href='"+book.get("url")+".html'>"+book.get("title")+" by "+book.get("author")+"</a></p>");	
 			}
 			
 			
@@ -38,13 +38,39 @@ $("#displayBooksTable").empty();
 			 for (var i = 0; i < results.length; i++){
 				var book = results[i];
 				console.log(book.get("title") + " " + searched);
-				tableContent= tableContent+ "<tr><td></td><td colspan='5'><a href='"+book.get("url")+".html'>"+book.get("title")+" by "+book.get("author")+"</a></td></tr>";	
+				tableContent= tableContent+ "<a href='"+book.get("url")+".html'>"+book.get("title")+" by "+book.get("author")+"</a></br>";	
 				
 			}
 			if(results.length<1){
-				tableContent="<tr><td></td><td colspan='5'>No book matching that title exists.</td></tr>";
+				tableContent="No book matching that title exists.</br>";
 			}
 			
 			document.getElementById('displayBooksTable').innerHTML = tableContent;}
 	});
+}
+
+function showAll(id){
+
+	var text = document.getElementById(id).textContent;
+   
+	if (text == "See All Books"){
+		document.getElementById(id).textContent = "Hide List";
+		$("#all").append("</br><h2>All Books <h2>");
+		var readingQuery = new Parse.Query(Book);
+		readingQuery.ascending("title");
+		readingQuery.find({
+			success: function(results) {
+			 for (var i = 0; i < results.length; i++){
+				books=results;
+				var book = books[i];
+				
+				$("#all").append("<p><a href='"+book.get("url")+".html'>"+book.get("title")+" by "+book.get("author")+"</a></p>");	
+				}
+			}});
+	}
+	else{
+		
+		$("#all").html("");
+		document.getElementById(id).textContent = "See All Books";
+	}
 }
