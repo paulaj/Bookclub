@@ -16,6 +16,51 @@ $.extend({
 	}
 });
 
+function changeButton(buttonType){
+	if(buttonType === "add"){
+		$("#recommendButton").empty();
+		$("#addButton").append("<button type='button' onClick='addFriend()'>Add As Friend</button>");
+	}
+	else{
+		$("#recommendButton").append("<div><h5>Recommend a book: <input class='text' id='profileRecommendBook' placeholder='Enter Book Title'></input><button type='button' id='recommendButton' onClick='recommend()'>Recommend</button></h5></div><br>");
+		$("#addButton").append("<button type='button' onClick='removeFriend()'>Remove Friend</button>");
+	}
+}
+
+	function removeFriend(){
+		var username = $.getUrlVar('username');
+		username = username.replace("%20"," ");
+		var currentUser = Parse.User.current();
+			currentUser.remove("friends", username);
+			currentUser.set("read", currentUser.get("read"));
+			currentUser.set("username", currentUser.get("username"));
+			currentUser.set("reading", currentUser.get("reading"));
+			currentUser.set("goingToRead", currentUser.get("goingToRead"));
+			currentUser.set("liked", currentUser.get("liked"));
+			currentUser.set("userpic", currentUser.get("userpic"));
+			currentUser.save();
+
+			$("#addButton").empty();
+			setTimeout(function(){changeButton("add")},500);
+	}
+    
+		function addFriend(){
+		var username = $.getUrlVar('username');
+		username = username.replace("%20"," ");
+		var currentUser = Parse.User.current(); 
+			currentUser.add("friends", username);
+			currentUser.set("read", currentUser.get("read"));
+			currentUser.set("username", currentUser.get("username"));
+			currentUser.set("reading", currentUser.get("reading"));
+			currentUser.set("goingToRead", currentUser.get("goingToRead"));
+			currentUser.set("liked", currentUser.get("liked"));
+			currentUser.set("userpic", currentUser.get("userpic"));
+			currentUser.save();
+
+			$("#addButton").empty();
+			setTimeout(function(){changeButton("remove")},500);
+		}
+
 $(document).ready(function(){
   Parse.initialize("qyuc8DGipEXPi3Fh32EKqnH2H563DPoFqcRjoa9h", "QTmatMd6trXNFaB0OaaPWEeCdCFpWm6YLv53dnn9");
 		var query = new Parse.Query(Parse.User);
@@ -72,7 +117,11 @@ $(document).ready(function(){
 						var user = Parse.User.current();
 						if (user.get("friends").indexOf(person.get("username")) != -1){
 							console.log("yeah dude");
-							$("#recommendButton").append("<div><h5>Recommend a book: <input class='text' id='profileRecommendBook'></input><button type='button' id='recommendButton' onClick='recommend()'>Recommend</button></h5></div><br>");
+							$("#recommendButton").append("<div><h5>Recommend a book: <input class='text' id='profileRecommendBook' placeholder='Enter Book Title'></input><button type='button' id='recommendButton' onClick='recommend()'>Recommend</button></h5></div><br>");
+							$("#addButton").append("<button type='button' onClick='removeFriend()'>Remove Friend</button>");
+						}
+						else{
+							$("#addButton").append("<button type='button' onClick='addFriend()'>Add As Friend</button>");
 						}
 						$(function() {
 							var bookQuery = new Parse.Query(Book);
