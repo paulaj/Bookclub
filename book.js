@@ -202,8 +202,8 @@ $(document).ready(function() {
 	modal: true,
 	buttons: {
 		"Recommend": function() {
-			//var shouldRecommend = confirm("Are you sure?");
-			//if (shouldRecommend){
+			var shouldRecommend = confirm("Are you sure?");
+			if (shouldRecommend){
 				$('#chooseFriends').find(':checked').each(function() {
 					console.log("please send some recs person");
 					friend = this.id;
@@ -218,28 +218,21 @@ $(document).ready(function() {
 						success: function(tofriend){
 							rec.set("recommendedTo", tofriend.id);
 							console.log("ID: "+tofriend.id);
+							console.log(Parse.User.current().get("username"));
+							rec.set("recommendedBy", Parse.User.current().id);
+							rec.set("title", $("#title").text());
+							rec.save();
+							console.log("Pickle"+Parse.User.current().get("username"));
 						},
 						error: function(error){
 							alert("Error: "+error.code + " "+error.message);
 						}
 					});
-					console.log(Parse.User.current().get("username"));
-					rec.set("recommendedBy", Parse.User.current().id);
-					rec.set("title", $("#title"));
-					rec.save(null, {
-						success: function(rec){
-							console.log("woot woot!");
-						},
-						error: function(rec, error){
-							console.log("error");
-						}
-					});
-					console.log("Pickle"+Parse.User.current().get("username"));
 					$(this).removeAttr('checked');
 				});
-			//}
-			return false;
+			}
 			$(this).dialog("close");
+			return false;
 		},
 		
 		"Cancel": function() {
