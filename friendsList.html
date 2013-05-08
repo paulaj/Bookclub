@@ -73,6 +73,7 @@
 			tableContent+=row1+row2;
 		}
 		document.getElementById('displayFriendsTable').innerHTML = tableContent;
+		document.getElementById('searchType').innerHTML="<h3>My Friends</h3></br>";
 	}
 
 	function removeFriend(delete_person){
@@ -125,13 +126,15 @@
 		console.log(lost_friend);
 		console.log(users);
 		//console.log(users.indexOf(lost_friend));
-		if(users.indexOf(lost_friend) === -1 || friends.indexOf(lost_friend) > -1){
-			displayFriends();
+		if( friends.indexOf(lost_friend) > -1){
+			row1 = "<tr><td><img src= 'sprite-gold-star'/>" +"</td><td><a href='profile.html?username="+lost_friend+"'/><img src='"+lost_friend+".png' alt='"+lost_friend+"'/></a></td><td></td><td nowrap class='friend_name'><h3><a href='profile.html?username="+lost_friend+"'/>" + lost_friend + "</a></h3></td></tr>";
+			row2 = "<tr class='arbuttons'><td></td><td class='rem'><center><button id='"+lost_friend+"'onClick='removeFriend(this.id)'>Remove</button></center></td></tr>";
+			tableContent+=row1+row2;
 		}
 		else if(users.indexOf(lost_friend) > -1){
 			i = users.indexOf(lost_friend);
 			console.log('hello')
-			row1 = "<tr><td><img src= 'sprite-gold-star'/>" +"</td><td><a href='profile.html?username="+friends[i]+"'/><img src='"+lost_friend+".png' alt='"+lost_friend+"'/></a></td><td></td><td nowrap class='friend_name'><h2><a href='profile.html?username="+friends[i]+"'/>" + lost_friend + "</a></h2></td></tr>";
+			row1 = "<tr><td><img src= 'sprite-gold-star'/>" +"</td><td><a href='profile.html?username="+lost_friend+"'/><img src='"+lost_friend+".png' alt='"+lost_friend+"'/></a></td><td></td><td nowrap class='friend_name'><h3><a href='profile.html?username="+lost_friend+"'/>" + lost_friend + "</a></h3></td></tr>";
 			row2 = "<tr class='arbuttons'><td></td><td class='add'><center><button id='"+lost_friend+"'onClick='addFriend(this.id)'>Add</button></center></td></tr>";
 			tableContent+=row1+row2;
 		}
@@ -140,6 +143,7 @@
 		}
 		//console.log(tableContent)
 		document.getElementById('displayFriendsTable').innerHTML = tableContent;
+		document.getElementById('searchType').innerHTML="<h3>Search Results</h3></br>";
 		}
 	
 	
@@ -149,11 +153,20 @@
 		var row2;
 		var tableContent="";
 		for(var i = 0; i < users.length; i++){
-			row1 = "<tr><td><img src= 'sprite-gold-star'/>" +"</td><td><a href='profile.html?username="+users[i]+"'/><img src='"+users[i]+".png' alt='"+users[i]+"'/></a></td><td></td><td nowrap class='friend_name'><h3><a href='profile.html?username="+users[i]+"'/>" + users[i] + "</a></h3></td></tr>";
-			row2 = "<tr class='arbuttons'><td></td><td class='rem'><center><button id='"+users[i]+"'onClick='removeFriend(this.id)'>Remove</button></center></td></tr>";
-			tableContent+=row1+row2;
+			if( friends.indexOf(users[i]) > -1){
+				row1 = "<tr><td><img src= 'sprite-gold-star'/>" +"</td><td><a href='profile.html?username="+users[i]+"'/><img src='"+users[i]+".png' alt='"+users[i]+"'/></a></td><td></td><td nowrap class='friend_name'><h3><a href='profile.html?username="+users[i]+"'/>" + users[i] + "</a></h3></td></tr>";
+				row2 = "<tr class='arbuttons'><td></td><td class='rem'><center><button id='"+users[i]+"'onClick='removeFriend(this.id)'>Remove</button></center></td></tr>";
+				tableContent+=row1+row2;
+			}
+			else if(friends.indexOf(users[i]) === -1 && users.indexOf(users[i]) > -1){
+				console.log('hello')
+				row1 = "<tr><td><img src= 'sprite-gold-star'/>" +"</td><td><a href='profile.html?username="+users[i]+"'/><img src='"+users[i]+".png' alt='"+users[i]+"'/></a></td><td></td><td nowrap class='friend_name'><h3><a href='profile.html?username="+users[i]+"'/>" + users[i]+ "</a></h3></td></tr>";
+				row2 = "<tr class='arbuttons'><td></td><td class='add'><center><button id='"+users[i]+"'onClick='addFriend(this.id)'>Add</button></center></td></tr>";
+				tableContent+=row1+row2;
+			}
 		}
 		document.getElementById('displayFriendsTable').innerHTML = tableContent;
+		document.getElementById('searchType').innerHTML="<h3>All Users</h3></br>";
 	}
 
 	</script>	
@@ -184,7 +197,7 @@
     <div class="container">
 	
 		<h2>Manage Friends </h2></br>
-
+		
 		<table id="searchTable">
 			<tr class="friend_search">
 				<td>
@@ -195,6 +208,7 @@
 				<td><button type='button' id="allUsers" onClick=showAll()>Show All Users</button></td>
 			</tr>
 		</table>
+		<div id="searchType"><h3>My Friends</h3></br> </div>
 		<table id="displayFriendsTable">
 		</table>
 	</div>
