@@ -144,7 +144,7 @@ else if(users.indexOf(lost_friend) > -1){
 else{
 tableContent = "<tr><td></td><td colspan='5'>No user matching that name exists.</td></tr>";
 }
-//console.log(tableContent)
+
 document.getElementById('displayFriendsTable').innerHTML = tableContent;
 }
 
@@ -175,7 +175,12 @@ document.getElementById('displayFriendsTable').innerHTML = tableContent;
     </div>
 
     <div class="container">
-		
+	
+		<ul class="options">
+			<li><a href="" id="mine">My Friends</a></li>
+			<li><a href="" id="all">All Users</a></li>
+			<li><a href="" id="search">Search For a Friend</a></li>
+		</ul> <br/>
 
 		<table id="searchTable">
 			<tr class="friend_search">
@@ -185,6 +190,7 @@ document.getElementById('displayFriendsTable').innerHTML = tableContent;
 				<td><button id="frndSrchBtn" onclick="searchFriends(document.getElementById('friendSearchBox').value)"><span class="ui-icon ui-icon-search"></span></button></td>
 			</tr>
 		</table>
+		
 		<table id="displayFriendsTable">
 		</table>
 	</div>
