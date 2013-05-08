@@ -3,6 +3,10 @@ var user = Parse.User.current();
 var Book = Parse.Object.extend("Book");
 var Recommendation = Parse.Object.extend("Recommendation");
 
+$(document).ready(function(){
+  $("#profileLink").attr("href",'profile.html?username='+Parse.User.current().get("username"));
+});
+
 $(function() {
 	if (Parse.User.current() === null){
 		$(".content").replaceWith("You need to <a href='login.html'>log in</a> to use this feature.");
