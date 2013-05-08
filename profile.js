@@ -114,13 +114,15 @@ $(document).ready(function(){
 				
 					
 					if (Parse.User.current() != null){
+                    var username = $.getUrlVar('username');
+                        username = username.replace("%20"," ");
 						var user = Parse.User.current();
 						if (user.get("friends").indexOf(person.get("username")) != -1){
 							console.log("yeah dude");
 							$("#recommendButton").append("<div><h5>Recommend a book: <input class='text' id='profileRecommendBook' placeholder='Enter Book Title'></input><button type='button' id='recommendButton' onClick='recommend()'>Recommend</button></h5></div><br>");
 							$("#addButton").append("<button type='button' onClick='removeFriend()'>Remove Friend</button>");
 						}
-						else if(user.get("username") != person.get("username")){
+						else if(user.get("username") != username){
 							$("#addButton").append("<button type='button' onClick='addFriend()'>Add As Friend</button>");
 						}
 						$(function() {
