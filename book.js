@@ -3,11 +3,23 @@ $(document).ready(function() {
 	var Book = Parse.Object.extend("Book");
 	var Rating = Parse.Object.extend("Rating");
 	var Comment = Parse.Object.extend("Comment");
+	var Recommendation = Parse.Object.extend("Recommendation");
 	var yourRating = 0;
 	var query = new Parse.Query(Book);
 	var rated = false;
 	//var bookRatings;
 	query.equalTo("title", $("#title").text());
+	
+	console.log("oh man I sure am a comment");
+	var recommendDiv = "";
+	var friendsList = Parse.User.current().get("friends");
+	for (i = 0; i < friendsList.length; i++){
+		recommendDiv += "<input type='checkbox' id='"+friendsList[i]+"'>"+friendsList[i]+"</input></br>"
+	}
+	recommendDiv += ""
+	$("#chooseFriends").html(recommendDiv);
+	console.log(recommendDiv);
+		
 	
 	query.first({
 		success: function(object){
@@ -191,12 +203,19 @@ $(document).ready(function() {
 		"Recommend": function() {
 			var shouldRecommend = confirm("Are you sure?");
 			if (shouldRecommend){
-				$(this).dialog("close");
 				$('#chooseFriends').find(':checked').each(function() {
+					console.log("please send some recs person");
+					friend = this.id;
+					var rec = new Recommendation();
+					console.log(Parse.User.current().get("username"));
+					rec.set("recommendedBy", Parse.User.current().id);
+					rec.set("title", $("#title"));
+					rec.set("recommendedTo", friend)
+					rec.save();
 					$(this).removeAttr('checked');
 				});
-				alert("Recommended.");
 			}
+			return false;
 		},
 		"Cancel": function() {
 			$(this).dialog("close");
