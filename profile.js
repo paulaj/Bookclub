@@ -75,7 +75,7 @@ $(document).ready(function(){
 					var source = person.get("userpic");
 					$("#profilePic").attr("src",source);
 					var Book = Parse.Object.extend("Book");
-					if (person.get("reading")){
+					if (person.get("reading").length != 0){
 						for (var i = 0; i < person.get("reading").length; i++){
 							var readingQuery = new Parse.Query(Book);
 							console.log(person.get("reading")[i]);
@@ -93,7 +93,7 @@ $(document).ready(function(){
 					
 					// Liked Books
 					
-					if (person.get("liked")){
+					if (person.get("liked").length != 0){
 						for (var i = 0; i < person.get("liked").length; i++){
 							var readingQuery = new Parse.Query(Book);
 							var book = readingQuery.equalTo("title", person.get("liked")[i]);
@@ -104,7 +104,7 @@ $(document).ready(function(){
 							});
 						}
 					} else {
-					$("#likes").append("nothing at the moment");
+					$("#likes").append("no books yet");
 					}
 					
 					
