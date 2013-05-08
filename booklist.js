@@ -93,6 +93,7 @@ $(function() {
 					user.set("read", user.get("read"));
 					user.set("username", user.get("username"));
 					user.set("friends", user.get("friends"));
+					user.set("liked", currentUser.get("liked"));
 					user.save();
 					$("#reading").append("<div id='"+object.get("url")+"div'><a href='"+object.get("url")+".html' class='listedBook'>"+object.get("title")+" by "+object.get("author")+"</a><button type='button' class='done' id="+object.get("url")+" onClick='markDone(this.id)'>Done Reading</button></br></div>");
 				}
@@ -111,7 +112,8 @@ $(function() {
 					user.remove("reading", object.get("title"));
 					user.set("goingToRead", user.get("goingToRead"));
 					user.set("username", user.get("username"));
-					user.set("friends", user.get("friends"));					
+					user.set("friends", user.get("friends"));
+					user.set("liked", currentUser.get("liked"));					
 					user.save();
 					$("#alreadyRead").append("<div id='"+object.get("url")+"div'><a href='"+object.get("url")+".html' class='listedBook'>"+object.get("title")+" by "+object.get("author")+"</a></br></div>");
 				}
@@ -130,7 +132,8 @@ $(function() {
 					user.set("read", user.get("read"));
 					user.set("reading", user.get("reading"));
 					user.set("username", user.get("username"));
-					user.set("friends", user.get("friends"));	
+					user.set("friends", user.get("friends"));
+					user.set("liked", currentUser.get("liked"));	
 					var recQuery = new Parse.Query(Recommendation);
 					recQuery.equalTo("title", object.get("title"));
 					recQuery.equalTo("recommendedTo", user.id);

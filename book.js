@@ -88,6 +88,25 @@ $(document).ready(function() {
 	});
 	
 	function updateRatingInfo(){
+		var currentUser = Parse.User.current();
+		if(yourRating >= 4){
+			currentUser.addUnique("liked", object.get("title"));
+			currentUser.set("read", currentUser.get("read"));
+			currentUser.set("username", currentUser.get("username"));
+			currentUser.set("reading", currentUser.get("reading"));
+			currentUser.set("goingToRead", currentUser.get("goingToRead"));
+			currentUser.set("friends", currentUser.get("friends"));
+			currentUser.save();
+		}
+		else{
+			currentUser.remove("liked", object.get("title"));
+			currentUser.set("read", currentUser.get("read"));
+			currentUser.set("username", currentUser.get("username"));
+			currentUser.set("reading", currentUser.get("reading"));
+			currentUser.set("goingToRead", currentUser.get("goingToRead"));
+			currentUser.set("friends", currentUser.get("friends"));
+			currentUser.save();
+		}
 		$('#avgRatingInfo').empty();
 		$("#avgRatingInfo").html("Your Rating: "+ yourRating+ "<br>Average: "+Math.round(object.get("avgRating")*10)/10+", based on "+object.get("numRatings")+" votes");
 	}
