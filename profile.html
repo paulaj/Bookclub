@@ -92,22 +92,22 @@
             </div>
             <div class="modal-body">
               <div class="row">
-                <div class="span1"></div><div class="span3"><img src="stockphotos/stock1.png" onclick="updatePic('stockphotos/stock1.png');"></div>
-                <div class="span1"></div><div class="span3"><img src="stockphotos/stock2.png"></div>
-                <div class="span1"></div><div class="span3"><img src="stockphotos/stock3.png"></div>
+                <div class="span1"></div><div class="span3"><img id="s0" src="stockphotos/stock1.png" onclick="activatePic('s0');"></div>
+                <div class="span1"></div><div class="span3"><img id="s1" src="stockphotos/stock2.png" onclick="activatePic('s1');"></div>
+                <div class="span1"></div><div class="span3"><img id="s2" src="stockphotos/stock3.png" onclick="activatePic('s2');"></div>
               </div>
               <br/>
               <div class="row">
               </div>
               <div class="row">
-                <div class="span1"></div><div class="span3"><img src="stockphotos/stock4.png"></div>
-                <div class="span1"></div><div class="span3"><img src="stockphotos/stock5.png"></div>
-                <div class="span1"></div><div class="span3"><img src="stockphotos/stock6.png"></div>
+                <div class="span1"></div><div class="span3"><img id="s3" src="stockphotos/stock4.png" onclick="activatePic('s3');"></div>
+                <div class="span1"></div><div class="span3"><img id="s4" src="stockphotos/stock5.png" onclick="activatePic('s4');"></div>
+                <div class="span1"></div><div class="span3"><img id="s5" src="stockphotos/stock6.png" onclick="activatePic('s5');"></div>
               </div>
             </div>
             <div class="modal-footer">
             <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-            <button class="btn btn-primary">Save changes</button>
+            <button class="btn btn-primary" onclick="updatePicZ();"data-dismiss="modal" aria-hidden="true">Save changes</button>
             </div>
             </div>
           </div>
