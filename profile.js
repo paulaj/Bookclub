@@ -108,7 +108,7 @@ function recommend(){
 	alert("Recommended.");
 };
 
-/*$(document).ready(function(){
+$(document).ready(function(){
   Parse.initialize("qyuc8DGipEXPi3Fh32EKqnH2H563DPoFqcRjoa9h", "QTmatMd6trXNFaB0OaaPWEeCdCFpWm6YLv53dnn9");
   var currentUser = $.getUrlVar("username");
   var logInUser = Parse.User.current().get("username");
@@ -120,4 +120,4 @@ function recommend(){
   $("#currUser").html(currentUser);
   $("#profileLink").attr('href', 'profile.html?username='+logInUser);
   $("#username").html(currentUser);
-});*/
+});
