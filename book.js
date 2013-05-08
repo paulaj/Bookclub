@@ -43,41 +43,19 @@ $(document).ready(function() {
 		});
 	});
 	
-	// How to make this work without displaying confirmation???
-	//$(window).bind('beforeunload', function(e){
-	$(function(){
-		if ($("#rating").val() != ""){
-			var totalRating = object.get("avgRating")*object.get("numRatings");
-			object.set("numRatings", object.get("numRatings") + 1);
-			console.log($("#rating").val());
-			if (parseInt($("#rating").val()) >= 4){
-				console.log(Parse.User.current().get("liked"));
-				Parse.User.current().addUnique("liked", object.get("title"));
-				Parse.User.current().save();
-				console.log(Parse.User.current().get("liked"));
-			} else {
-				Parse.User.current().remove("liked", object.get("title"));
-				Parse.User.current().save();
-			}
-			object.set("avgRating", (parseInt($("#rating").val())+totalRating)/object.get("numRatings"));
-			object.save();
-		}
-		return false;
-		});
+
+	// HANNAHDORF! FILL IN YOUR RATINGS CODE, GIRL! :D
 	
 	$("#addToShelf").click(function(){
 		var user = Parse.User.current();
-		console.log(user.get("username"));
 		var shouldAdd = confirm("Add this book to your reading list?");
-		console.log(shouldAdd);
-		console.log(object.get("title"));
-		console.log(user.get("username"));
 		if (shouldAdd){
 			user.addUnique("goingToRead", object.get("title"));
-			console.log(user.get("goingToRead"));
-			console.log(user.get("username"));
+			user.set("read", user.get("read"));
+			user.set("username", user.get("username"));
+			user.set("friends", user.get("friends"));
+			user.set("reading", user.get("reading"));
 			user.save();
-			console.log(user.get("username"));
 		};
 	});
 	

@@ -77,10 +77,7 @@ $(function() {
 					user.set("read", user.get("read"));
 					user.set("username", user.get("username"));
 					user.set("friends", user.get("friends"));
-					console.log(user.get("goingToRead"));
-					console.log(user.get("username"));
 					user.save();
-					console.log(user.get("username"));
 					$("#reading").append("<div id='"+object.get("url")+"div'><a href='"+object.get("url")+".html' class='listedBook'>"+object.get("title")+" by "+object.get("author")+"</a><button type='button' class='done' id="+object.get("url")+" onClick='markDone(this.id)'>Done Reading</button></br></div>");
 				}
 			});
@@ -97,10 +94,10 @@ $(function() {
 					$("#"+object.get("url")+"div").remove();
 					user.addUnique("read", object.get("title"));
 					user.remove("reading", object.get("title"));
-					console.log(user.get("username"));
+					user.set("goingToRead", user.get("goingToRead"));
+					user.set("username", user.get("username"));
+					user.set("friends", user.get("friends"));					
 					user.save();
-					console.log(user.get("reading"));
-					console.log(user.get("username"));
 					$("#alreadyRead").append("<div id='"+object.get("url")+"div'><a href='"+object.get("url")+".html' class='listedBook'>"+object.get("title")+" by "+object.get("author")+"</br></div>");
 				}
 			});
