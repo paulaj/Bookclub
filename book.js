@@ -195,28 +195,52 @@ $(document).ready(function() {
 
  $(function() {	
  $("#chooseFriends").dialog({
-	autoOpen: false,
-	height: 300,
+ 	autoOpen: false,
+ 	height: 300,
 	width: 350,
 	modal: true,
 	buttons: {
 		"Recommend": function() {
-			var shouldRecommend = confirm("Are you sure?");
-			if (shouldRecommend){
+			//var shouldRecommend = confirm("Are you sure?");
+			//if (shouldRecommend){
 				$('#chooseFriends').find(':checked').each(function() {
 					console.log("please send some recs person");
 					friend = this.id;
+					console.log(friend);
+					
 					var rec = new Recommendation();
+
+					var user_query = new Parse.Query(Parse.User);
+					user_query.equalTo("username", friend);
+					console.log("death");
+					user_query.first({
+						success: function(tofriend){
+							rec.set("recommendedTo", tofriend.id);
+							console.log("ID: "+tofriend.id);
+						},
+						error: function(error){
+							alert("Error: "+error.code + " "+error.message);
+						}
+					});
 					console.log(Parse.User.current().get("username"));
 					rec.set("recommendedBy", Parse.User.current().id);
 					rec.set("title", $("#title"));
-					rec.set("recommendedTo", friend)
-					rec.save();
+					rec.save(null, {
+						success: function(rec){
+							console.log("woot woot!");
+						},
+						error: function(rec, error){
+							console.log("error");
+						}
+					});
+					console.log("Pickle"+Parse.User.current().get("username"));
 					$(this).removeAttr('checked');
 				});
-			}
+			//}
 			return false;
+			$(this).dialog("close");
 		},
+		
 		"Cancel": function() {
 			$(this).dialog("close");
 			$('#chooseFriends').find(':checked').each(function() {

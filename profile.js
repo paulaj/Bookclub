@@ -108,11 +108,16 @@ function recommend(){
 	alert("Recommended.");
 };
 
-function showdiv(divname){  
-    alert('a');
-    var divthing = $("#"+divname);
-    alert('a');
-    divthing.attr("style","display:block);"
-    alert('a');
-};
-
+$(document).ready(function(){
+  Parse.initialize("qyuc8DGipEXPi3Fh32EKqnH2H563DPoFqcRjoa9h", "QTmatMd6trXNFaB0OaaPWEeCdCFpWm6YLv53dnn9");
+  var currentUser = $.getUrlVar("username");
+  var logInUser = Parse.User.current().get("username");
+  currentUser = currentUser.replace("%20", " ");
+  if (currentUser != logInUser){
+    $("#newPicToggle").attr("style", "display:none;");
+  }
+  currUserDiv = document.getElementById("currUser");
+  $("#currUser").html(currentUser);
+  $("#profileLink").attr('href', 'profile.html?username='+currentUser);
+  $("#username").html(currentUser);
+});

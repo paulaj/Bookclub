@@ -37,7 +37,7 @@
         width:200px;
       }
       
-      #stockPic{
+      .stockPic{
         width:200px;
         height:200px;
       }
@@ -50,17 +50,6 @@
 	<script src="http://www.parsecdn.com/js/parse-1.2.7.min.js"></script>
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" /> 
 	<script src="profile.js"></script>
-    <script type="text/javascript">
-
-    function toggle_visibility(id) {
-       var e = document.getElementById(id);
-       if(e.style.display == 'block')
-          e.style.display = 'none';
-       else
-          e.style.display = 'block';
-    };
-
-    </script>
   </head>
 
   <body>
@@ -76,7 +65,7 @@
           <a class="brand" href="home.html">BookClub</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-			<li class="active"><a href="profile.html">Profile</a></li>
+			<li class="active"><a id="profileLink" href="profile.html">Profile</a></li>
             <li><a href="friendsList.html">Friends</a></li>
             <li><a href="booklist.html">My Library</a></li>
             <li><a href="booksearch.html" >Find Books</a></li>
@@ -90,8 +79,12 @@
       <div class="container-fluid">
         <div class="row-fluid">
           <div class="span3">
-            <img id="profilePic">
-            <a href="#myModal" role="button" class="btn" data-toggle="modal">Select New Picture!</a>
+            <center>
+            <img id="profilePic" class="stockPic">
+            <a href="#myModal" role="button" class="btn" data-toggle="modal" id="newPicToggle">Select New Picture!</a>
+            </center>
+            <br>
+            <br>
             <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -117,14 +110,6 @@
             <button class="btn btn-primary">Save changes</button>
             </div>
             </div>
-            <!--<span id="picSelect" onclick="toggle_visibility('picMenu');"> Select a new picture! </span>-->
-            <!--<div id="picMenu" class="row" style="display:none;">-->
-              <!--<img src="stockphotos/stock1.png">-->
-              <!--<img src="stockphotos/stock2.png">-->
-              <!--<img src="stockphotos/stock3.png">-->
-              <!--<img src="stockphotos/stock4.png">-->
-              <!--<img src="stockphotos/stock5.png">-->
-            <!--</div>-->
           </div>
           <div class="span7">
             <h3><div class="username"></div></h3><br>
