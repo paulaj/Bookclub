@@ -120,7 +120,7 @@ $(document).ready(function(){
 							$("#recommendButton").append("<div><h5>Recommend a book: <input class='text' id='profileRecommendBook' placeholder='Enter Book Title'></input><button type='button' id='recommendButton' onClick='recommend()'>Recommend</button></h5></div><br>");
 							$("#addButton").append("<button type='button' onClick='removeFriend()'>Remove Friend</button>");
 						}
-						else{
+						else if(user.get("username") != person.get("username")){
 							$("#addButton").append("<button type='button' onClick='addFriend()'>Add As Friend</button>");
 						}
 						$(function() {
