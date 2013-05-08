@@ -96,6 +96,7 @@ $(document).ready(function() {
 			currentUser.set("reading", currentUser.get("reading"));
 			currentUser.set("goingToRead", currentUser.get("goingToRead"));
 			currentUser.set("friends", currentUser.get("friends"));
+			currentUser.set("userpic", currentUser.get("userpic"));
 			currentUser.save();
 		}
 		else{
@@ -105,6 +106,7 @@ $(document).ready(function() {
 			currentUser.set("reading", currentUser.get("reading"));
 			currentUser.set("goingToRead", currentUser.get("goingToRead"));
 			currentUser.set("friends", currentUser.get("friends"));
+			currentUser.set("userpic", currentUser.get("userpic"));
 			currentUser.save();
 		}
 		$('#avgRatingInfo').empty();
@@ -180,6 +182,8 @@ $(document).ready(function() {
 			user.set("username", user.get("username"));
 			user.set("friends", user.get("friends"));
 			user.set("reading", user.get("reading"));
+			user.set("userpic", currentUser.get("userpic"));
+			user.set("liked", currentUser.get("liked"));
 			user.save();
 			alert(object.get("title")+" added to reading list.");
 		};
