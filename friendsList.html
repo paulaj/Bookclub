@@ -89,6 +89,10 @@
 		if(friends.indexOf(delete_person) > -1){
 			friends.splice(friends.indexOf(delete_person), 1);
 			currentUser.remove("friends", delete_person);
+			currentUser.set("read", currentUser.get("read"));
+			currentUser.set("username", currentUser.get("username"));
+			currentUser.set("reading", currentUser.get("reading"));
+			currentUser.set("goingToRead", currentUser.get("goingToRead"));
 			currentUser.save();
 		}
 		console.log(currentUser.get("friends"));
@@ -100,6 +104,10 @@ var new_buddy = lost_friend.replace('_add', '');
 if(users.indexOf(new_buddy) > -1 && friends.indexOf(new_buddy) === -1){
 	friends.push(new_buddy);
 	currentUser.add("friends", lost_friend);
+	currentUser.set("read", currentUser.get("read"));
+	currentUser.set("username", currentUser.get("username"));
+	currentUser.set("reading", currentUser.get("reading"));
+	currentUser.set("goingToRead", currentUser.get("goingToRead"));
 	currentUser.save();
 }
 console.log(currentUser.get("friends"));
