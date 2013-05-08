@@ -32,7 +32,6 @@ $(document).ready(function() {
 			$("#recommend").replaceWith("");
 			$("#commentform").replaceWith("Please <a style='color: #0000FF' href='login.html'>log in</a> to add a comment.");
 		} else {
-			$("#logout").html("Logout ("+Parse.User.current().get("username")+")");
 		}
 		$(".rateBook").flexibleStars({
 			init: object.get("avgRating"),
@@ -45,7 +44,7 @@ $(document).ready(function() {
 	});
 	
 	// How to make this work without displaying confirmation???
-//	$(window).bind('beforeunload', function(e){
+	//$(window).bind('beforeunload', function(e){
 	$(function(){
 		if ($("#rating").val() != ""){
 			var totalRating = object.get("avgRating")*object.get("numRatings");
@@ -67,10 +66,18 @@ $(document).ready(function() {
 		});
 	
 	$("#addToShelf").click(function(){
+		var user = Parse.User.current();
+		console.log(user.get("username"));
 		var shouldAdd = confirm("Add this book to your reading list?");
+		console.log(shouldAdd);
+		console.log(object.get("title"));
+		console.log(user.get("username"));
 		if (shouldAdd){
-			Parse.User.current().addUnique("goingToRead", object.get("title"));
-			Parse.User.current().save();
+			user.addUnique("goingToRead", object.get("title"));
+			console.log(user.get("goingToRead"));
+			console.log(user.get("username"));
+			user.save();
+			console.log(user.get("username"));
 		};
 	});
 	
