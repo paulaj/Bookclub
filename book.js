@@ -56,6 +56,7 @@ $(document).ready(function() {
 			user.set("friends", user.get("friends"));
 			user.set("reading", user.get("reading"));
 			user.save();
+			alert(object.get("title")+" added to reading list.");
 		};
 	});
 	
