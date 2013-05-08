@@ -8,6 +8,7 @@ $(document).ready(function() {
 	var query = new Parse.Query(Book);
 	var rated = false;
 	//var bookRatings;
+    $("#profileLink").attr("href",'profile.html?username='+Parse.User.current().get("username"));
 	query.equalTo("title", $("#title").text());
 	
 	console.log("oh man I sure am a comment");

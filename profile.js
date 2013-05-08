@@ -16,7 +16,7 @@ $.extend({
 	}
 });
 
-$(function(){
+$(document).ready(function(){
   Parse.initialize("qyuc8DGipEXPi3Fh32EKqnH2H563DPoFqcRjoa9h", "QTmatMd6trXNFaB0OaaPWEeCdCFpWm6YLv53dnn9");
 		var query = new Parse.Query(Parse.User);
 		var username = $.getUrlVar('username');
@@ -29,10 +29,6 @@ $(function(){
 					$(".username").html(username);
 					var source = person.get("userpic");
 					$("#profilePic").attr("src",source);
-                    if (username == Parse.User.current().get("username")){
-                        $("#newPictureSelect").attr("style", "display:visible;")
-                        
-                    }
 					var Book = Parse.Object.extend("Book");
 					if (person.get("reading")){
 						for (var i = 0; i < person.get("reading").length; i++){
@@ -108,6 +104,18 @@ function recommend(){
 	alert("Recommended.");
 };
 
+function updatePic(newUrl){
+  var query = new Parse.Query(Parse.User);
+  username = username.replace("%20"," ");
+  query.first({
+    success: function(person){
+      var rec = new Recommendation();
+      rec.set("userpic", newUrl);
+      rec.save();
+    },
+  });
+};
+
 $(document).ready(function(){
   Parse.initialize("qyuc8DGipEXPi3Fh32EKqnH2H563DPoFqcRjoa9h", "QTmatMd6trXNFaB0OaaPWEeCdCFpWm6YLv53dnn9");
   var currentUser = $.getUrlVar("username");
@@ -117,7 +125,7 @@ $(document).ready(function(){
     $("#newPicToggle").attr("style", "display:none;");
   }
   currUserDiv = document.getElementById("currUser");
-  $("#currUser").html(currentUser);
-  $("#profileLink").attr('href', 'profile.html?username='+currentUser);
-  $("#username").html(currentUser);
+  //$("#currUser").html(currentUser);
+  $("#profileLink").attr('href', 'profile.html?username='+logInUser);
+  //$("#username").html(currentUser);
 });
