@@ -28,7 +28,7 @@ $(function() {
 			var book = readingQuery.equalTo("title", user.get("reading")[i]);
 			book.first({
 				success: function(object){
-					$("#reading").append("<div id='"+object.get("url")+"div'><a href='"+object.get("url")+".html' class='listedBook'>"+object.get("title")+" by "+object.get("author")+"</a><button type='button' class='done' id="+object.get("url")+" onClick='markDone(this.id)'>Done Reading</button></br></div>");
+					$("#reading").append("<div class='row'><div class='span5'><div id='"+object.get("url")+"div'><a href='"+object.get("url")+".html' class='listedBook'>"+object.get("title")+" by "+object.get("author")+"</a></div></div class='span3'><button type='button' class='done' id="+object.get("url")+" onClick='markDone(this.id)'>Done Reading</button></div></div></br></div>");
 				},
 			});
 		}
@@ -40,7 +40,7 @@ $(function() {
 			var book = goingToReadQuery.equalTo("title", user.get("goingToRead")[i]);
 			book.first({
 				success: function(object){
-					$("#goingToRead").append("<div id='"+object.get("url")+"div'><a href='"+object.get("url")+".html' class='listedBook'>"+object.get("title")+" by "+object.get("author")+"</a><button type='button' class='currentlyReading' id="+object.get('url')+" onClick='markReading(this.id)'>Currently Reading</button></br></div>");
+					$("#goingToRead").append("<div class='row'><div class='span5'><div id='"+object.get("url")+"div'><a href='"+object.get("url")+".html' class='listedBook'>"+object.get("title")+" by "+object.get("author")+"</a></div></div class='span3'><button type='button' class='currentlyReading' id="+object.get('url')+" onClick='markReading(this.id)'>Currently Reading</button></div></div></br></div>");
 				},
 			});
 		}
@@ -51,7 +51,7 @@ $(function() {
 			var book = readQuery.equalTo("title", user.get("read")[i]);
 			book.first({
 				success: function(object){
-					$("#alreadyRead").append("<div id='"+object.get('url')+"div'><a href='"+object.get("url")+".html' class='listedBook'>"+object.get("title")+" by "+object.get("author")+"</a></br></div>");
+					$("#alreadyRead").append("<div class='row'><div class='span5'><div id='"+object.get('url')+"div'><a href='"+object.get("url")+".html' class='listedBook'>"+object.get("title")+" by "+object.get("author")+"</a></div></div></br></div>");
 				},
 			});
 		}
@@ -67,7 +67,7 @@ $(function() {
 					var book = bookQuery.equalTo("title", thing[i].get("title"));
 					book.first({
 					success: function(object){
-						$("#recommended").append("<div id='"+object.get("url")+"div'><a href='"+object.get("url")+".html' class='listedBook'>"+object.get("title")+" by "+object.get("author")+"</a><button type='button' class='goingToRead' id="+object.get('url')+" onClick='markGoingToRead(this.id)'>I'll Read It!</button><button type='button' class='ignoreRec' id="+object.get('url')+" onClick='ignoreRec(this.id)'>No Thanks</button></br></div>");
+						$("#recommended").append("<div class='row'><div class='span5'><div id='"+object.get("url")+"div'><a href='"+object.get("url")+".html' class='listedBook'>"+object.get("title")+" by "+object.get("author")+"</a></div></div class='span3'><button type='button' class='goingToRead' id="+object.get('url')+" onClick='markGoingToRead(this.id)'>I'll Read It!</button><button type='button' class='ignoreRec' id="+object.get('url')+" onClick='ignoreRec(this.id)'>No Thanks</button></div></div></br></div>");
 					},
 					});
 				}
@@ -96,7 +96,7 @@ $(function() {
 					user.set("liked", currentUser.get("liked"));
 					user.set("userpic", currentUser.get("userpic"));
 					user.save();
-					$("#reading").append("<div id='"+object.get("url")+"div'><a href='"+object.get("url")+".html' class='listedBook'>"+object.get("title")+" by "+object.get("author")+"</a><button type='button' class='done' id="+object.get("url")+" onClick='markDone(this.id)'>Done Reading</button></br></div>");
+					$("#reading").append("<div class='row'><div class='span5'><div id='"+object.get("url")+"div'><a href='"+object.get("url")+".html' class='listedBook'>"+object.get("title")+" by "+object.get("author")+"</a></div></div class='span3'><button type='button' class='done' id="+object.get("url")+" onClick='markDone(this.id)'>Done Reading</button></div></div></br></div>");
 				}
 			});
 		}
@@ -117,7 +117,7 @@ $(function() {
 					user.set("liked", currentUser.get("liked"));
 					user.set("userpic", currentUser.get("userpic"));					
 					user.save();
-					$("#alreadyRead").append("<div id='"+object.get("url")+"div'><a href='"+object.get("url")+".html' class='listedBook'>"+object.get("title")+" by "+object.get("author")+"</a></br></div>");
+					$("#alreadyRead").append("<div class='row'><div class='span5'><div id='"+object.get("url")+"div'><a href='"+object.get("url")+".html' class='listedBook'>"+object.get("title")+" by "+object.get("author")+"</a></div></div></br></div>");
 				}
 			});
 		}
@@ -146,7 +146,7 @@ $(function() {
 						},
 					});
 					user.save();
-					$("#goingToRead").append("<div id='"+object.get("url")+"div'><a href='"+object.get("url")+".html' class='listedBook'>"+object.get("title")+" by "+object.get("author")+"</a><button type='button' class='currentlyReading' id="+object.get('url')+" onClick='markReading(this.id)'>Currently Reading</button></br></div>");
+					$("#goingToRead").append("<div class='row'><div class='span5'><div id='"+object.get("url")+"div'><a href='"+object.get("url")+".html' class='listedBook'>"+object.get("title")+" by "+object.get("author")+"</a></div></div class='span3'><button type='button' class='currentlyReading' id="+object.get('url')+" onClick='markReading(this.id)'>Currently Reading</button></div></div></br></div>");
 				}
 			});
 		}
